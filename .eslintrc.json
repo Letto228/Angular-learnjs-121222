@@ -31,10 +31,10 @@
             "style": "kebab-case"
           }
         ],
-        "@typescript-eslint/naming-convention": [
-          "error"
+        "@typescript-eslint/naming-selector": [
+          "error",
           {
-            "type": attribute,
+            "type": "element",
             "prefix": "app",
             "style": "camelCase"
           }
