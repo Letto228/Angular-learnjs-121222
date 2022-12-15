@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
-  title = 'Angular-learnjs-121222';
+	title = 'Angular-learnjs-121222';
 }
