@@ -4,12 +4,17 @@
 	"overrides": [
 		{
 			"files": ["*.ts"],
+			"plugins": ["prettier", "unicorn"],
 			"extends": [
 				"eslint:recommended",
 				"plugin:@typescript-eslint/recommended",
 				"plugin:@angular-eslint/recommended",
 				"plugin:@angular-eslint/template/process-inline-templates"
 			],
+			"env": {
+				"es6": true,
+				"browser": true
+			},
 			"rules": {
 				"@angular-eslint/directive-selector": [
 					"error",
