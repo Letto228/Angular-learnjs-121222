@@ -24,7 +24,10 @@
 						"tsConfig": "tsconfig.app.json",
 						"inlineStyleLanguage": "less",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["@angular/material/prebuilt-themes/indigo-pink.css", "src/styles.less"],
+						"styles": [
+							"@angular/material/prebuilt-themes/indigo-pink.css",
+							"src/styles.less"
+						],
 						"scripts": []
 					},
 					"configurations": {
@@ -79,7 +82,10 @@
 						"tsConfig": "tsconfig.spec.json",
 						"inlineStyleLanguage": "less",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["@angular/material/prebuilt-themes/indigo-pink.css", "src/styles.less"],
+						"styles": [
+							"@angular/material/prebuilt-themes/indigo-pink.css",
+							"src/styles.less"
+						],
 						"scripts": []
 					}
 				},
@@ -93,6 +99,7 @@
 		}
 	},
 	"cli": {
-		"schematicCollections": ["@angular-eslint/schematics"]
+		"schematicCollections": ["@angular-eslint/schematics"],
+		"analytics": "6e8e64c4-0871-44e8-bf39-471e48807f5d"
 	}
 }

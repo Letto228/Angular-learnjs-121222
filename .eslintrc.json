@@ -1,5 +1,8 @@
 {
 	"root": true,
+	"rules": {
+		"@typescript-eslint/no-duplicate-imports": "error"
+	},
 	"overrides": [
 		{
 			"files": ["*.ts"],
