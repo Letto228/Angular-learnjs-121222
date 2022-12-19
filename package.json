@@ -10,8 +10,9 @@
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
 		"prettier:fix": "prettier --write",
-		"prettier:all": "prettier --write .",
-		"lint": "ng lint"
+		"prettier:fix:all": "prettier --write .",
+		"lint": "ng lint",
+		"prepare": "husky install"
 	},
 	"private": true,
 	"dependencies": {
