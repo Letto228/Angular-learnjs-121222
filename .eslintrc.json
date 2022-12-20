@@ -9,6 +9,7 @@
 				"plugin:@angular-eslint/recommended",
 				"plugin:@angular-eslint/template/process-inline-templates"
 			],
+			"plugins": ["angular-file-naming"],
 			"rules": {
 				"@angular-eslint/directive-selector": [
 					"error",
@@ -38,7 +39,11 @@
 					}
 				],
 				"@typescript-eslint/no-unused-vars": ["error"],
-				"@typescript-eslint/no-unreachable": ["error"]
+				"angular-file-naming/component-filename-suffix": "error",
+				"angular-file-naming/directive-filename-suffix": "error",
+				"angular-file-naming/module-filename-suffix": "error",
+				"angular-file-naming/pipe-filename-suffix": "error",
+				"angular-file-naming/service-filename-suffix": "error"
 			}
 		},
 		{
