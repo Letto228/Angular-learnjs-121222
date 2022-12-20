@@ -1,0 +1,39 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>{{card.name}}</mat-card-title>
+    <mat-card-subtitle>{{card.subCategory}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <img mat-card-image [src]="activeImageSrc" alt="Photo of a Shiba Inu">
+
+    <mat-slider 
+      min="0" max="{{card.images.length}}"
+      step="1"
+      (change)="sliderHandler($event)"
+    >
+      <input matSliderThumb />
+    </mat-slider>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <span class="rating">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="hotel_class"></mat-icon>
+      <span>{{card.rating}}</span>
+    </span>
+
+    <span class="feedbacks">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="mark_unread_chat_alt"></mat-icon>
+      <span>{{card.feedbacksCount}}</span>
+    </span>
+
+    <span class="buy">
+      <span>{{card.price}}$</span>
+
+      <button mat-flat-button color="primary" (click)="buy($event, card._id); ">
+        Купить
+        <mat-icon>payments</mat-icon>
+      </button>
+    </span>
+  </mat-card-actions>
+</mat-card>
