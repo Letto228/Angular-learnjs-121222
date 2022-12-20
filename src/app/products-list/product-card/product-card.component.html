@@ -1,0 +1,33 @@
+<mat-card class="product-card">
+	<mat-card-header>
+		<!-- <div mat-card-avatar class="example-header-image"></div> -->
+		<mat-card-title class="product-name">{{ name }}</mat-card-title>
+		<!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+	</mat-card-header>
+	<img mat-card-image [src]="imgSrc" />
+	<!-- <mat-card-content>
+      <p>
+        Цена: {{price}}
+      </p>
+    </mat-card-content> -->
+	<mat-card-header class="product-footer">
+		<!-- <div mat-card-avatar class="example-header-image"></div> -->
+		<mat-card-subtitle class="product-rating"
+			>Рейтинг: {{ rating }}/5</mat-card-subtitle
+		>
+		<mat-card-title class="product-price"
+			>Цена: {{ price }} рублей</mat-card-title
+		>
+	</mat-card-header>
+	<mat-card-actions>
+		<button
+			class="product-buyButton"
+			mat-button
+			[id]="id"
+			(click)="buyProduct(id); $event.stopPropagation()"
+		>
+			Купить
+		</button>
+		<!-- <button mat-button>SHARE</button> -->
+	</mat-card-actions>
+</mat-card>
