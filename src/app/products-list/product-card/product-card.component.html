@@ -1,0 +1,28 @@
+<mat-card class="example-card">
+	<mat-card-header>
+		<mat-card-title>{{ card.name }}</mat-card-title>
+		<mat-card-subtitle class="subTitle"
+			>Количество отзывов: {{ card.feedbacksCount }}
+		</mat-card-subtitle>
+	</mat-card-header>
+	<img mat-card-image [src]="card.images[0].url" [alt]="card.name" />
+	<mat-divider class="divider"></mat-divider>
+	<mat-card-content class="description">
+		<p>
+			Реалистичный 8-дюймовый IPS-экран Оснащенный 8-дюймовым HD-экраном планшет
+			воспроизводит яркий и живой контент. IPS-матрица гарантирует естественную
+			цветопередачу и широкие углы обзора, ....
+		</p>
+	</mat-card-content>
+	<mat-card-actions class="buy__button">
+		<button
+			matBadge="x2"
+			matBadgeColor="warn"
+			mat-raised-button
+			color="primary"
+			(click)="buy($event, card._id)"
+		>
+			Primary
+		</button>
+	</mat-card-actions>
+</mat-card>
