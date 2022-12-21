@@ -35,6 +35,10 @@
 							"regex": "^I[A-Z]",
 							"match": true
 						}
+					},
+					{
+						"selector": ["class", "enum"],
+						"format": ["PascalCase"]
 					}
 				]
 			}
