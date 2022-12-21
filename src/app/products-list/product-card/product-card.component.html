@@ -1,0 +1,29 @@
+<mat-card class="example-card" (click)="openCard()">
+	<mat-card-header>
+		<mat-card-title>{{ product.name }}</mat-card-title>
+	</mat-card-header>
+	<img mat-card-image [src]="product.images[0].url" [alt]="product.name" />
+	<mat-card-actions>
+		<button mat-button (click)="changeRating($event)" title="Оценить">
+			<mat-icon aria-hidden="false" fontIcon="star"></mat-icon
+			>{{ product.rating }}
+		</button>
+		<button mat-button (click)="share($event)" title="Поделиться">
+			<mat-icon aria-hidden="false" fontIcon="share_reviews"></mat-icon
+			>{{ product.feedbacksCount }}
+		</button>
+		<div class="actions-left">
+			<button
+				mat-button
+				(click)="addToCart($event)"
+				title="Добавить в корзину"
+			>
+				<mat-icon
+					aria-hidden="false"
+					fontIcon="shopping_cart_checkout"
+				></mat-icon>
+				{{ product.price }} ₽
+			</button>
+		</div>
+	</mat-card-actions>
+</mat-card>
