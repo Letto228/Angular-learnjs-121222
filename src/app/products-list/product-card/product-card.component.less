@@ -1,6 +1,11 @@
 :host {
-	&:hover img {
-		opacity: 0.7;
+	&:hover {
+		img {
+			opacity: 0.7;
+		}
+		.slider-actions {
+			display: flex;
+		}
 	}
 	img {
 		transition: opacity 0.3s, visibility 0s linear 0.3s;
@@ -27,6 +32,13 @@
 
 .actions-left {
 	margin-left: auto;
+}
+
+.slider-actions {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	display: none;
 }
 
 mat-card-title {
