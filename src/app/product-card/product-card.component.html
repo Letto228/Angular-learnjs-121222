@@ -1,1 +1,34 @@
-<p>product-card works!</p>
+<mat-card class="card">
+	<mat-card-header>
+		<mat-card-title>{{card.name}}</mat-card-title>
+		<mat-card-subtitle>{{card.subCategory}}</mat-card-subtitle>
+	</mat-card-header>
+
+	<mat-card-content>
+		<img mat-card-image [src]="activeImg" alt="Photo of a Shiba Inu">
+
+	</mat-card-content>
+
+	<mat-card-actions>
+    <div class="rating">
+      <mat-icon>star</mat-icon>
+      <span>{{card.rating}}</span>
+    </div>
+
+		<div class="feedbacks">
+      <mat-icon>chat</mat-icon>
+      <span>{{card.feedbacksCount}}</span>
+    </div>
+
+	<div class="buy">
+      <span>{{card.price}}$</span>
+	</div>
+
+	<div>
+		 <button mat-raised-button color="primary" (click)="buy($event, card._id); ">
+			Купить
+			<mat-icon>payments</mat-icon>
+		  </button>
+    </div>
+	</mat-card-actions>
+</mat-card>

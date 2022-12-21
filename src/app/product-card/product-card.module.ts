@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [ProductCardComponent],
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatSliderModule, MatIconModule],
+	imports: [CommonModule, MatCardModule, MatButtonModule, MatSliderModule, MatIconModule],
   exports: [ProductCardComponent],
 })
 export class ProductCardModule {}
