@@ -8,7 +8,6 @@ import {productMock} from "../shared/products/product.mock";
 })
 export class ProductCardComponent {
 	readonly card = productMock;
-	public activeImg = this.card.images[0].url;
 
 	buy(event: Event, id: string) {
 		event.stopPropagation();

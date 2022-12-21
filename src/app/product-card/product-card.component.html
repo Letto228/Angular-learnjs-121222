@@ -5,8 +5,11 @@
 	</mat-card-header>
 
 	<mat-card-content>
-		<img mat-card-image [src]="activeImg" alt="Photo of a Shiba Inu">
-
+		<p-carousel [value]="card.images" orientation="vertical" [style]="{'max-width':'400px', 'margin-top':'2em'}" verticalViewPortHeight="352px" [numVisible]="1" [numScroll]="1">
+			<ng-template let-cardItem pTemplate="images">
+							<img src="{{this.cardItem.url}}" [alt]="card.name" />
+			</ng-template>
+		</p-carousel>
 	</mat-card-content>
 
 	<mat-card-actions>
