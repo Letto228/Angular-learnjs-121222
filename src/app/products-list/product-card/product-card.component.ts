@@ -8,15 +8,13 @@ import { productMock } from './../../shared/products/product.mock';
 })
 export class ProductCardComponent {
   readonly card = productMock;
-  public activeImageSrc: string;
+  public activeImageSrc = this.card.images[0].url;
 
-  constructor() {
-    this.activeImageSrc = this.card.images[0].url;
-  }
-
-  sliderHandler(event: any) {
-    this.activeImageSrc = this.card.images[event.target.ariaValueText].url;
-    console.log(event.target.ariaValueText, this.card.images[event.target.ariaValueText].url);
+  onImageSliderChange(event: Event) {
+    const sliderValue = (event.target as HTMLInputElement).ariaValueText;
+    const imageIndex = sliderValue ? Number(sliderValue) : 0;
+    console.log(sliderValue, imageIndex);
+    this.activeImageSrc = this.card.images[imageIndex].url;
   }
 
   buy(event: Event, id: string) {

@@ -8,9 +8,10 @@
     <img mat-card-image [src]="activeImageSrc" alt="Photo of a Shiba Inu">
 
     <mat-slider 
-      min="0" max="{{card.images.length}}"
+      min="0"
+      [max]="card.images.length"
       step="1"
-      (change)="sliderHandler($event)"
+      (change)="onImageSliderChange($event)"
     >
       <input matSliderThumb />
     </mat-slider>
@@ -18,12 +19,12 @@
 
   <mat-card-actions>
     <span class="rating">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="hotel_class"></mat-icon>
+      <mat-icon>hotel_class</mat-icon>
       <span>{{card.rating}}</span>
     </span>
 
     <span class="feedbacks">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="mark_unread_chat_alt"></mat-icon>
+      <mat-icon>mark_unread_chat_alt</mat-icon>
       <span>{{card.feedbacksCount}}</span>
     </span>
 
