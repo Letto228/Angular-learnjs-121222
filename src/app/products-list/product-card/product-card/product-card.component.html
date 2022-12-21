@@ -1,0 +1,21 @@
+<mat-card class="example-card" (click)="didPurchase($event)">
+	<mat-card-header>
+		<mat-card-title>{{ name }}</mat-card-title>
+	</mat-card-header>
+	<img mat-card-image [src]="img" [alt]="name" />
+	<mat-card-content>
+		<span>рейтинг:{{ rating }}</span>
+	</mat-card-content>
+	<mat-card-content>
+		<strong>{{ price }}$</strong>
+	</mat-card-content>
+	<mat-card-actions>
+		<button
+			mat-raised-button
+			color="primary"
+			(click)="$event.stopPropagation()"
+		>
+			Купить
+		</button>
+	</mat-card-actions>
+</mat-card>
