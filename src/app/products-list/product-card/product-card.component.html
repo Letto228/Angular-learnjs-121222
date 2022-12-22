@@ -1,0 +1,41 @@
+<mat-card class="product-card" (click)="openProductPage($event)">
+	<mat-card-header class="product-card__header">
+		<mat-card-title-group class="product-card__header-group">
+			<mat-card-title class="product-card__header-title">{{
+				product?.name
+			}}</mat-card-title>
+			<mat-card-subtitle class="product-card__header-subtitle">
+				<mat-icon fontIcon="attach_money"></mat-icon> Цена:
+				{{ product?.price }} руб.
+			</mat-card-subtitle>
+			<img
+				*ngIf="product"
+				class="product-card__header-image"
+				mat-card-xl-image
+				[src]="getFirstImageUrl()"
+			/>
+		</mat-card-title-group>
+	</mat-card-header>
+	<mat-card-footer class="product-card__footer">
+		<div class="product-card__rate">
+			<mat-icon fontIcon="star"></mat-icon>
+			<span class="product-card__rate-value">{{ product?.rating }}</span>
+		</div>
+		<div class="product-card__feedback">
+			<mat-icon fontIcon="chat_bubble"></mat-icon>
+			<span class="product-card__feedback-value">{{
+				product?.feedbacksCount
+			}}</span>
+		</div>
+		<div class="product-card__buy">
+			<button
+				class="product-card__buy-button"
+				mat-flat-button
+				color="accent"
+				(click)="addProductToCart($event)"
+			>
+				<mat-icon>shopping_cart</mat-icon> В корзину
+			</button>
+		</div>
+	</mat-card-footer>
+</mat-card>
