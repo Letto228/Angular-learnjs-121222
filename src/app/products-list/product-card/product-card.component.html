@@ -1,33 +1,26 @@
 <mat-card class="product-card">
 	<mat-card-header>
-		<!-- <div mat-card-avatar class="example-header-image"></div> -->
-		<mat-card-title class="product-name">{{ name }}</mat-card-title>
-		<!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+		<mat-card-title class="product-name">{{
+			productMock.name
+		}}</mat-card-title>
 	</mat-card-header>
-	<img mat-card-image [src]="imgSrc" />
-	<!-- <mat-card-content>
-      <p>
-        Цена: {{price}}
-      </p>
-    </mat-card-content> -->
+	<img mat-card-image [src]="productMock.images.at(0)?.url" />
 	<mat-card-header class="product-footer">
-		<!-- <div mat-card-avatar class="example-header-image"></div> -->
-		<mat-card-subtitle class="product-rating"
-			>Рейтинг: {{ rating }}/5</mat-card-subtitle
-		>
-		<mat-card-title class="product-price"
-			>Цена: {{ price }} рублей</mat-card-title
-		>
+		<mat-card-subtitle class="product-rating">
+			Рейтинг: {{ productMock.rating }}/5
+		</mat-card-subtitle>
+		<mat-card-title class="product-price">
+			Цена: {{ productMock.price }} рублей
+		</mat-card-title>
 	</mat-card-header>
 	<mat-card-actions>
 		<button
 			class="product-buyButton"
 			mat-button
-			[id]="id"
-			(click)="buyProduct(id); $event.stopPropagation()"
+			[id]="productMock._id"
+			(click)="buyProduct(productMock._id); $event.stopPropagation()"
 		>
 			Купить
 		</button>
-		<!-- <button mat-button>SHARE</button> -->
 	</mat-card-actions>
 </mat-card>
