@@ -1,0 +1,26 @@
+<mat-card class="example-card">
+	<mat-card-header>
+		<mat-card-title>{{ card.name }}</mat-card-title>
+		<mat-card-subtitle align="end"
+			>Отзывы : {{ card.feedbacksCount }}</mat-card-subtitle
+		>
+	</mat-card-header>
+	<ng-image-slider
+		#nav
+		slideImage="1"
+		[images]="images"
+		[infinite]="false"
+		[autoSlide]="1"
+		[imageSize]="{ width: '450px', height: '450px' }"
+	></ng-image-slider>
+	<mat-card-content>
+		<span class="price-label">{{ card.price }} рублей</span>
+		<span class="rate-label">Рейтинг: {{ card.rating }}</span>
+		<img height="15px" class="icon" [src]="starIcon" />
+	</mat-card-content>
+	<mat-card-actions align="end">
+		<button mat-button color="primary" (click)="onProductBuy($event)">
+			Купить
+		</button>
+	</mat-card-actions>
+</mat-card>

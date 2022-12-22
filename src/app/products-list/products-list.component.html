@@ -1,1 +1,5 @@
-<!-- <app-product-card></app-product-card> -->
+<mat-grid-list cols="2" rowHeight="1:1">
+	<mat-grid-tile *ngFor="let i of [0, 1, 2, 3]">
+		<app-product-card></app-product-card>
+	</mat-grid-tile>
+</mat-grid-list>
