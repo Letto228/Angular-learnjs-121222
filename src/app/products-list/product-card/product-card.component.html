@@ -1,0 +1,23 @@
+<mat-card class="example-card">
+	<mat-card-header [style.margin-bottom.px]="5">
+		<mat-card-title>{{ card.name }}</mat-card-title>
+	</mat-card-header>
+
+	<mat-card-content>
+		<div class="status">
+			<mat-icon fontIcon="star" class="star-icon"></mat-icon>
+			<span [style.margin-right.px]="10">{{ card.rating }}</span>
+
+			<mat-icon fontIcon="rate_review" class="feedback-icon"></mat-icon>
+			<span>{{ card.feedbacksCount }} отзыва</span>
+		</div>
+	</mat-card-content>
+	<img mat-card-image class="card-img" [src]="card.images[0].url" />
+
+	<mat-card-footer>
+		<div class="price">{{ card.price }} ₽</div>
+		<button mat-button class="buy-btn" (click)="onClick($event)">
+			Купить
+		</button>
+	</mat-card-footer>
+</mat-card>
