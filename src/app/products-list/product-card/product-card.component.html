@@ -1,9 +1,9 @@
 <mat-card class="product-card" (click)="openProductPage($event)">
 	<mat-card-header class="product-card__header">
 		<mat-card-title-group class="product-card__header-group">
-			<mat-card-title class="product-card__header-title">{{
-				product?.name
-			}}</mat-card-title>
+			<mat-card-title class="product-card__header-title">
+				{{ product?.name }}
+			</mat-card-title>
 			<mat-card-subtitle class="product-card__header-subtitle">
 				<mat-icon fontIcon="attach_money"></mat-icon> Цена:
 				{{ product?.price }} руб.
