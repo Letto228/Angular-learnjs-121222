@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { applicationConfigMock } from '../../shared/application-config/application-config.mock';
 
 @Component({
 	selector: 'app-header',
@@ -6,11 +7,5 @@ import { Component } from '@angular/core';
 	styleUrls: ['./header.component.less'],
 })
 export class HeaderComponent {
-	readonly imgSrc = '../../../favicon.ico';
-	// readonly imgSrc = 'https://avatars.mds.yandex.net/i?id=b1ba5d199d0c1598bb5762fc6faf2f5526a0cf1a-5513755-images-thumbs&n=13';
-
-	onLogValue(event: MouseEvent) {
-		// event.stopPropagation();
-		console.log(event);
-	}
+	readonly applicationConfig = applicationConfigMock;
 }
