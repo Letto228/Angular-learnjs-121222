@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Subject } from 'rxjs';
+import { IApplicationConfig } from '../../shared/application-config/application-config.interface';
 import { applicationConfigMock } from '../../shared/application-config/application-config.mock';
 
 @Component({
@@ -7,5 +9,11 @@ import { applicationConfigMock } from '../../shared/application-config/applicati
 	styleUrls: ['./header.component.less'],
 })
 export class HeaderComponent {
-	readonly applicationConfig = applicationConfigMock;
+	@Input() applicationConfig: IApplicationConfig | undefined;
+
+	@Output() menuClick = new EventEmitter<Event>();
+
+	onMenuClick(event: Event) {
+		this.menuClick.emit(event);
+	}
 }
