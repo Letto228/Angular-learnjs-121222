@@ -1,0 +1,44 @@
+.card {
+	max-width: calc(100vw / 2 - 30px);
+	margin-bottom: 8px;
+	margin-top: 20px;
+
+	mat-card-content {
+		margin: 20px 0 10px;
+		img {
+			max-width: 100%;
+		}
+	}
+
+	mat-card-actions {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 20px;
+
+		* {
+			display: flex;
+			align-items: center;
+		}
+
+		mat-icon {
+			margin-right: 5px;
+		}
+
+		.rating {
+			color: firebrick;
+		}
+
+		.feedbacks {
+			color: darkcyan;
+		}
+
+		.buy {
+			color: #4caf50;
+		}
+
+		button {
+			margin-left: 5px;
+		}
+	}
+}
