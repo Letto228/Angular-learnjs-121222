@@ -11,12 +11,10 @@ import { productMock } from '../../shared/products/product.mock';
 export class ProductCardComponent {
 	readonly card: IProduct = productMock;
 
-	readonly images = this.card.images.map((img: IProductImage) => {
-		return {
-			image: img.url,
-			thumbImage: img.url,
-		};
-	});
+	readonly images = this.card.images.map((img: IProductImage) => ({
+		image: img.url,
+		thumbImage: img.url,
+	}));
 	readonly starIcon = '../../../assets/seastar.svg';
 
 	onProductBuy = (event: MouseEvent) => {
