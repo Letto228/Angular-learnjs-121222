@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { productMock } from '../../../shared/products/product.mock';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IProduct } from 'src/app/shared/products/product.interface';
+import { IProductImage } from 'src/app/shared/products/product-image.interface';
 
 @Component({
 	selector: 'app-product-card',
@@ -7,11 +8,14 @@ import { productMock } from '../../../shared/products/product.mock';
 	styleUrls: ['./product-card.component.less'],
 })
 export class ProductCardComponent {
-	readonly product = productMock;
+	// readonly product = productMock;
+
+	@Input() product: IProduct | undefined;
+	@Output() productClick = new EventEmitter<Event>();
 
 	onProductBuy(event: Event) {
+		this.productClick.emit(event);
 		event.stopPropagation();
-
 		console.log('Buy');
 	}
 
