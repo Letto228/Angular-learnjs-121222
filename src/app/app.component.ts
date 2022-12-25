@@ -1,18 +1,17 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
+import { applicationConfigMock } from './shared/application-config/application-config.mock';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  interpolation: ['{{', '}}'],
+  styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
-  title = 'Angular-learnjs-121222';
-  // window = window;
+  readonly applicationConfig = applicationConfigMock;
 
-  onLogValue(event: Event) {
-    console.log(event);
+  // isSidenavOpened = false;
 
-    return true;
-  }
+  // onMenuClick() {
+  // 	this.isSidenavOpened = !this.isSidenavOpened;
+  // }
 }

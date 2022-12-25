@@ -1,6 +1,6 @@
-<app-header (click)="onLogValue($event)"></app-header>
-
-<!-- <input (keydown.enter)="onLogValue($event)" (contextmenu)="(false)" /> -->
-<!-- () => false -->
-
+<app-header
+	[applicationConfig]="applicationConfig"
+	(menuClick)="sidenav.sidenavToggle()"
+></app-header>
+<app-sidenav #sidenav></app-sidenav>
 <app-products-list></app-products-list>
