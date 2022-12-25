@@ -1,0 +1,49 @@
+.card {
+  max-width: calc(100vw / 4 - 30px);
+  margin-bottom: 8px;
+
+  mat-slider {
+    width: 100%;
+  }
+
+  mat-card-content {
+    margin: 20px 0 10px;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+
+    * {
+      display: flex;
+      align-items: center;
+    }
+
+    mat-icon {
+      margin-right: 5px;
+    }
+
+    button {
+      margin-left: 5px;
+    }
+
+    .rating {
+      color: #03a9f4;
+    }
+
+    .feedbacks {
+      color: #ffc107;
+    }
+
+    .buy {
+      color: #4caf50;
+    }
+  }
+}
