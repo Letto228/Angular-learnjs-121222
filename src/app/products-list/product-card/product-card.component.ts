@@ -1,25 +1,32 @@
-import { Component } from '@angular/core';
-import { productMock } from './../../shared/products/product.mock';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import type { AfterContentInit } from '@angular/core';
+import type { IProduct } from 'src/app/shared/products/product.interface';
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss'],
 })
-export class ProductCardComponent {
-  readonly card = productMock;
-  public activeImageSrc = this.card.images[0].url;
+export class ProductCardComponent implements AfterContentInit {
+  @Input() product: IProduct | undefined;
+  @Output() productClick = new EventEmitter<Event>();
+
+  public activeImageSrc: string | undefined = undefined;
 
   onImageSliderChange(event: Event) {
     const sliderValue = (event.target as HTMLInputElement).ariaValueText;
     const imageIndex = sliderValue ? Number(sliderValue) : 0;
-    console.log(sliderValue, imageIndex);
-    this.activeImageSrc = this.card.images[imageIndex].url;
+    this.activeImageSrc = this.product?.images[imageIndex].url;
   }
 
-  buy(event: Event, id: string) {
+  buy(event: Event, id?: string) {
+    this.productClick.emit(event);
     event.stopPropagation();
 
-    console.log(id);
+    if (id) console.log(id);
+  }
+
+  ngAfterContentInit() {
+    this.activeImageSrc = this.product?.images[0].url;
   }
 }
