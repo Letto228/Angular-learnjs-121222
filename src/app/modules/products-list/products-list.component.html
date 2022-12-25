@@ -1,1 +1,9 @@
-<app-product-card></app-product-card>
+<ul class="products-list">
+	<li *ngFor="let product of productsList">
+		<app-product-card
+			[product]="product"
+			(productSelected)="onProductSelected(product)"
+		>
+		</app-product-card>
+	</li>
+</ul>
