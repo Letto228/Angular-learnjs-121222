@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Subject } from 'rxjs';
 import { IApplicationConfig } from '../../shared/application-config/application-config.interface';
-import { applicationConfigMock } from '../../shared/application-config/application-config.mock';
+import { IProduct } from '../../shared/products/product.interface';
 
 @Component({
 	selector: 'app-header',
@@ -9,11 +8,16 @@ import { applicationConfigMock } from '../../shared/application-config/applicati
 	styleUrls: ['./header.component.less'],
 })
 export class HeaderComponent {
+	@Input() cart: IProduct[] = [];
 	@Input() applicationConfig: IApplicationConfig | undefined;
 
 	@Output() menuClick = new EventEmitter<Event>();
 
 	onMenuClick(event: Event) {
 		this.menuClick.emit(event);
+	}
+
+	openCart() {
+		console.log('open cart');
 	}
 }

@@ -1,11 +1,11 @@
 <app-header
 	[applicationConfig]="applicationConfig"
-	(menuClick)="sidenav.sidenavToggle()"
+	[cart]="productList.cart"
 ></app-header>
 <!-- <app-sidenav
     [isSidenavOpened]="isSidenavOpened"
     (isSidenavOpenedChange)="isSidenavOpened = $event"
 ></app-sidenav> -->
 <!-- <app-sidenav [(isSidenavOpened)]="isSidenavOpened"></app-sidenav> -->
-<app-sidenav #sidenav></app-sidenav>
-<!-- <app-products-list></app-products-list> -->
+<!--<app-sidenav #sidenav></app-sidenav>-->
+<app-products-list #productList></app-products-list>
