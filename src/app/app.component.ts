@@ -11,7 +11,7 @@ export class AppComponent {
 	// window = window;
 
 	onLogValue(event: Event) {
-		console.log(event);
+		console.log(event.type);
 
 		return true;
 	}

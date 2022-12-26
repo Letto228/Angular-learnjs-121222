@@ -1,0 +1,28 @@
+<mat-card class="example-card">
+	<mat-card-header>
+		<mat-card-title>{{ card.name }}</mat-card-title>
+		<mat-card-subtitle class="property">
+			<label>Rating: {{ card.rating }}</label>
+			<br />
+			<label>Feedbacks: {{ card.feedbacksCount }}</label>
+		</mat-card-subtitle>
+	</mat-card-header>
+	<div class="gallery">
+		<button mat-icon-button>
+			<mat-icon> chevron_left </mat-icon>
+		</button>
+		<img mat-card-image alt="Item photo" [src]="card.images[0].url" />
+		<button mat-icon-button>
+			<mat-icon> chevron_right </mat-icon>
+		</button>
+	</div>
+	<mat-card-content class="property">
+		<br />
+		<label>Price: {{ card.price }}</label>
+	</mat-card-content>
+	<mat-card-actions>
+		<button mat-button click="onItemBuy($event)" class="property">
+			Buy
+		</button>
+	</mat-card-actions>
+</mat-card>
