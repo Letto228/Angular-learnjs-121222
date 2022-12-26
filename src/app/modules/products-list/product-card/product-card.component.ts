@@ -15,10 +15,12 @@ export class ProductCardComponent {
 		event.stopPropagation();
 
 		console.log('Buy');
-		if (id) this.productBuy.emit(id);
+		if (id) {
+			this.productBuy.emit(id);
+		}
 	}
 
 	isStarActive(starIndex: number): boolean {
-		return Boolean(this.product && this.product?.rating >= starIndex);
+		return Boolean(this.product && this.product.rating >= starIndex);
 	}
 }
