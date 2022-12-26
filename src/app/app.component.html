@@ -1,8 +1,33 @@
-<app-header [applicationConfig]="applicationConfig"></app-header>
+<app-header
+	name="config"
+	[applicationConfig]="applicationConfig"
+	(menuClick)="sidenav.sidenavToggle()"
+></app-header>
 <!-- <app-sidenav
     [isSidenavOpened]="isSidenavOpened"
     (isSidenavOpenedChange)="isSidenavOpened = $event"
 ></app-sidenav> -->
 <!-- <app-sidenav [(isSidenavOpened)]="isSidenavOpened"></app-sidenav> -->
-<!-- <app-sidenav #sidenav></app-sidenav> -->
-<app-products-list></app-products-list>
+<app-sidenav #sidenav>
+	<p>Hello</p>
+	<input />
+
+	<div #h>
+		<h1>H</h1>
+	</div>
+
+	<ng-template #navigationList>
+		{{ applicationConfig.title }}
+		<mat-list role="list">
+			<mat-list-item role="listitem">Item 1</mat-list-item>
+			<mat-list-item role="listitem">Item 2</mat-list-item>
+			<mat-list-item role="listitem">Item 3</mat-list-item>
+		</mat-list>
+	</ng-template>
+</app-sidenav>
+<!-- <app-products-list></app-products-list> -->
+
+<!-- For Homework -->
+<!-- <app-popup-host [popupTemplate]="template"></app-popup-host>
+
+<ng-template #template></ng-template> -->
