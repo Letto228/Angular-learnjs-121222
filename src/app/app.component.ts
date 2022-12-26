@@ -8,7 +8,6 @@ import { ProductsListComponent } from './modules/products-list/products-list.com
 	styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
-	@ViewChild('productList') productList: ProductsListComponent | undefined;
 	readonly applicationConfig = applicationConfigMock;
 
 	// isSidenavOpened = false;
