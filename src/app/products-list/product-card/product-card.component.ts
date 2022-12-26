@@ -23,7 +23,9 @@ export class ProductCardComponent implements AfterContentInit {
     this.productClick.emit(event);
     event.stopPropagation();
 
-    if (id) console.log(id);
+    if (id) {
+      console.log(id);
+    }
   }
 
   ngAfterContentInit() {
