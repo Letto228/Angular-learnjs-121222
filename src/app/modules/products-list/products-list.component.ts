@@ -10,7 +10,7 @@ import { IProduct } from '../../shared/products/product.interface';
 export class ProductsListComponent {
 	readonly product: IProduct | undefined = productMock;
 
-	buyProduct(event: Event) {
+	buyProduct() {
 		console.log('Buy');
 	}
 }
