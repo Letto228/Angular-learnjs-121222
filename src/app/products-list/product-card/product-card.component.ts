@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import type { AfterContentInit } from '@angular/core';
+import type { OnChanges } from '@angular/core';
 import type { IProduct } from 'src/app/shared/products/product.interface';
 
 @Component({
@@ -7,7 +7,7 @@ import type { IProduct } from 'src/app/shared/products/product.interface';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss'],
 })
-export class ProductCardComponent implements AfterContentInit {
+export class ProductCardComponent implements OnChanges {
   @Input() product: IProduct | undefined;
   @Output() productClick = new EventEmitter<Event>();
 
@@ -28,7 +28,7 @@ export class ProductCardComponent implements AfterContentInit {
     }
   }
 
-  ngAfterContentInit() {
+  ngOnChanges() {
     this.activeImageSrc = this.product?.images[0].url;
   }
 }
