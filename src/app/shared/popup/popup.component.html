@@ -1,0 +1,9 @@
+<div class="popup" [hidden]="!visible">
+    <div class="popup__wrapper">
+        <div class="popup__content">
+            <div class="popup__close"(click)="toggle()"></div>
+            <ng-container #viewContainer></ng-container>
+        </div>
+    </div>
+    <div class="popup__overlay"></div>
+</div>

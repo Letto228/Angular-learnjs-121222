@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { applicationConfigMock } from './shared/application-config/application-config.mock';
+import type { PopupComponent } from './shared/popup/popup.component';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,9 @@ import { applicationConfigMock } from './shared/application-config/application-c
 export class AppComponent {
   readonly applicationConfig = applicationConfigMock;
 
-  // isSidenavOpened = false;
-
-  // onMenuClick() {
-  // 	this.isSidenavOpened = !this.isSidenavOpened;
-  // }
+  @ViewChild('popup')
+  private popup: PopupComponent | undefined;
+  openPopup() {
+    this.popup?.toggle();
+  }
 }

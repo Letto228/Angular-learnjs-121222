@@ -4,3 +4,13 @@
 ></app-header>
 <app-sidenav #sidenav></app-sidenav>
 <app-products-list></app-products-list>
+
+<button type="button" (click)="openPopup()">
+	Оpen Popup 
+</button>
+
+<app-popup [popupTemplate]="popupTemplate" #popup></app-popup>
+
+<ng-template #popupTemplate>
+	<h2>Popup</h2>
+</ng-template>

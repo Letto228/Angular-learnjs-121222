@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './components/header/header.module';
 import { SidenavModule } from './components/sidenav/sidenav.module';
 import { ProductsListModule } from './products-list/products-list.module';
+import { PopupModule } from './shared/popup/popup.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { ProductsListModule } from './products-list/products-list.module';
     HeaderModule,
     SidenavModule,
     ProductsListModule,
+    PopupModule,
   ],
   bootstrap: [AppComponent],
 })
