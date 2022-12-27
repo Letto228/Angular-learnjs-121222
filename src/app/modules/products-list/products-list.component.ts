@@ -8,12 +8,8 @@ import { productMock } from '../../shared/products/product.mock';
 	styleUrls: ['./products-list.component.less'],
 })
 export class ProductsListComponent {
-	products: IProduct[] = [];
+	readonly products: IProduct[] = [productMock, productMock, productMock];
 	private _cart: IProduct[] = [];
-
-	constructor() {
-		this.products = [...this.products, ...[productMock, productMock, productMock]];
-	}
 
 	addToCart(product: IProduct) {
 		this._cart.push(product);
