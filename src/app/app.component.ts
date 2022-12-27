@@ -4,7 +4,7 @@ import { applicationConfigMock } from './shared/application-config/application-c
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less'],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   readonly applicationConfig = applicationConfigMock;

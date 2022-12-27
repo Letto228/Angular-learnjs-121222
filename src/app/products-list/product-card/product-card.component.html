@@ -1,7 +1,7 @@
 <mat-card class="card">
   <mat-card-header>
-    <mat-card-title>{{card.name}}</mat-card-title>
-    <mat-card-subtitle>{{card.subCategory}}</mat-card-subtitle>
+    <mat-card-title>{{product?.name}}</mat-card-title>
+    <mat-card-subtitle>{{product?.subCategory}}</mat-card-subtitle>
   </mat-card-header>
 
   <mat-card-content>
@@ -9,7 +9,7 @@
 
     <mat-slider 
       min="0"
-      [max]="card.images.length"
+      [max]="product?.images?.length"
       step="1"
       (change)="onImageSliderChange($event)"
     >
@@ -20,18 +20,18 @@
   <mat-card-actions>
     <span class="rating">
       <mat-icon>hotel_class</mat-icon>
-      <span>{{card.rating}}</span>
+      <span>{{product?.rating}}</span>
     </span>
 
     <span class="feedbacks">
       <mat-icon>mark_unread_chat_alt</mat-icon>
-      <span>{{card.feedbacksCount}}</span>
+      <span>{{product?.feedbacksCount}}</span>
     </span>
 
     <span class="buy">
-      <span>{{card.price}}$</span>
+      <span>{{product?.price}}$</span>
 
-      <button mat-flat-button color="primary" (click)="buy($event, card._id); ">
+      <button mat-flat-button color="primary" (click)="buy($event, product?._id); ">
         Купить
         <mat-icon>payments</mat-icon>
       </button>
