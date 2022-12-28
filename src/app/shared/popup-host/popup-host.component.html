@@ -1,0 +1,14 @@
+<div class="content mat-elevation-z8">
+	<div class="header mat-headline-6">
+		Popup title
+		<button mat-icon-button (click)="toggleOpened()">
+			<mat-icon>close</mat-icon>
+		</button>
+	</div>
+	<div class="content-container">
+		<ng-container #viewContainer></ng-container>
+	</div>
+	<div class="actions">
+		<button mat-button (click)="toggleOpened()">close</button>
+	</div>
+</div>

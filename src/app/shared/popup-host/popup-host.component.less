@@ -1,0 +1,50 @@
+:host {
+	&:not(.opened) {
+		display: none;
+	}
+
+	//backdrop
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(255, 255, 255, 0.3);
+	backdrop-filter: blur(4px);
+
+	//align content
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.content {
+	position: relative;
+	width: 33%;
+	background: white;
+	border-radius: 8px;
+	overflow: hidden;
+
+	& > div {
+		padding: 8px 16px;
+	}
+}
+
+.header {
+	display: flex;
+	background: #042237;
+	color: white;
+	margin-bottom: 0;
+	align-items: center;
+
+	button {
+		margin-left: auto;
+	}
+}
+
+.actions {
+	border-top: 1px solid #ccc;
+	display: flex;
+	justify-content: flex-end;
+}
