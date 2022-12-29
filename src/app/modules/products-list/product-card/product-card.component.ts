@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { IProduct } from '../../../shared/products/product.interface';
 
 @Component({
@@ -6,22 +6,27 @@ import { IProduct } from '../../../shared/products/product.interface';
 	templateUrl: './product-card.component.html',
 	styleUrls: ['./product-card.component.less'],
 })
-export class ProductCardComponent implements OnInit {
+export class ProductCardComponent implements OnChanges {
 	@Input() product: IProduct | undefined;
-	@Output() buyProduct = new EventEmitter<void>();
+	@Output() buyProduct = new EventEmitter<string>();
 
 	productPhotoUrl: string | undefined;
 
 	constructor() {}
 
-	ngOnInit() {
-		this.productPhotoUrl = this.product ? this.product.images[0].url : undefined;
+	ngOnChanges({ product }: SimpleChanges) {
+		if (product) {
+			this.productPhotoUrl = this.product ? this.product.images[0].url : undefined;
+		}
 	}
 
 	onProductBuy(event: Event) {
 		event.stopPropagation();
 
-		this.buyProduct.emit();
+		const productId = this.product?._id;
+		if (productId) {
+			this.buyProduct.emit(productId);
+		}
 	}
 
 	isStarActive(starIndex: number): boolean {
