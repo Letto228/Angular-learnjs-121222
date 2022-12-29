@@ -14,5 +14,3 @@ export class PopupHostComponent {
 	@ViewChild('template', { read: ViewContainerRef, static: true })
 	private template!: ViewContainerRef;
 }
-
-// немного не понимаю, как нужно показать темплейт(
