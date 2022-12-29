@@ -1,21 +1,18 @@
-import { Component, Input, OnChanges, SimpleChange, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, Input, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
 	selector: 'app-popup-host',
 	templateUrl: './popup-host.component.html',
 	styleUrls: ['./popup-host.component.less'],
 })
-export class PopupHostComponent implements OnChanges {
-	@Input() popupTemplate: string | undefined;
-
-	@ViewChild('template')
-	private template: string | undefined;
-
-	ngOnChanges(popupTemplate: SimpleChanges) {
-		if (popupTemplate) {
-			console.log(popupTemplate);
-		}
+export class PopupHostComponent {
+	@Input() set popupTemplate(template: TemplateRef<unknown>) {
+		this.template?.clear();
+		this.template?.createEmbeddedView(template);
 	}
+
+	@ViewChild('template', { read: ViewContainerRef, static: true })
+	private template!: ViewContainerRef;
 }
 
 // немного не понимаю, как нужно показать темплейт(
