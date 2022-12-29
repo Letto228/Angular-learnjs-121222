@@ -7,17 +7,17 @@ import { IProduct } from '../../../shared/products/product.interface';
 	styleUrls: ['./product-card.component.less'],
 })
 export class ProductCardComponent {
-	@Input() product: IProduct | undefined;
+	@Input() product!: IProduct;
 
-	@Output() productBuy = new EventEmitter<IProduct['_id'] | undefined>();
+	@Output() productBuy = new EventEmitter<IProduct['_id']>();
 
 	onProductBuy(event: Event) {
 		event.stopPropagation();
 
-		this.productBuy.emit(this.product?._id);
+		this.productBuy.emit(this.product._id);
 	}
 
 	isStarActive(starIndex: number): boolean {
-		return Boolean(this.product && this.product.rating >= starIndex);
+		return this.product.rating >= starIndex;
 	}
 }

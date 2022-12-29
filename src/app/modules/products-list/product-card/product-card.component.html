@@ -1,23 +1,26 @@
 <mat-card class="card">
 	<mat-card-header>
-		<mat-card-title>{{ product?.name }}</mat-card-title>
-		<mat-card-subtitle>{{ product?.price }} $</mat-card-subtitle>
+		<mat-card-title>{{ product.name }}</mat-card-title>
+		<mat-card-subtitle>{{ product.price }} $</mat-card-subtitle>
 	</mat-card-header>
 	<div class="galerey">
-		<button mat-icon-button>
-			<mat-icon> chevron_left </mat-icon>
-		</button>
-		<img
-			mat-card-image
-			alt="Product photo"
-			[src]="product?.images?.[0]?.url"
-		/>
-		<button mat-icon-button>
-			<mat-icon> chevron_right </mat-icon>
-		</button>
+		<ng-template
+			let-currentImage
+			let-next="next"
+			let-back="back"
+			[appCarousel]="product.images"
+		>
+			<button mat-icon-button (click)="back()">
+				<mat-icon> chevron_left </mat-icon>
+			</button>
+			<img mat-card-image alt="Product photo" [src]="currentImage.url" />
+			<button mat-icon-button (click)="next()">
+				<mat-icon> chevron_right </mat-icon>
+			</button>
+		</ng-template>
 	</div>
 	<mat-card-content>
-		<p>Отзывы: {{ product?.feedbacksCount }}</p>
+		<p>Отзывы: {{ product.feedbacksCount }}</p>
 		<div class="raiting">
 			Рейтинг:
 			<mat-icon [class.star-active]="isStarActive(1)"> star </mat-icon>
@@ -28,6 +31,8 @@
 		</div>
 	</mat-card-content>
 	<mat-card-actions class="mat-card-actions-align-end">
-		<button mat-button (click)="onProductBuy($event)">Buy</button>
+		<button mat-button appInsertShadow (click)="onProductBuy($event)">
+			Buy
+		</button>
 	</mat-card-actions>
 </mat-card>
