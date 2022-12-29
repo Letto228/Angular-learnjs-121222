@@ -28,6 +28,11 @@
 <!-- <app-products-list></app-products-list> -->
 
 <!-- For Homework -->
-<!-- <app-popup-host [popupTemplate]="template"></app-popup-host>
+<app-popup-host [template]="template"></app-popup-host>
 
-<ng-template #template></ng-template> -->
+<ng-template #template>
+	<div class="popup-content">
+		<h1>{{ applicationConfig.title }}</h1>
+		<p>Вот и наипростейший попап хост</p>
+	</div>
+</ng-template>
