@@ -17,7 +17,7 @@
 	</div>
 
 	<ng-template #navigationList>
-		{{ applicationConfig.title }}
+		<!-- {{ applicationConfig.title }} -->
 		<mat-list role="list">
 			<mat-list-item role="listitem">Item 1</mat-list-item>
 			<mat-list-item role="listitem">Item 2</mat-list-item>
@@ -27,7 +27,13 @@
 </app-sidenav>
 <!-- <app-products-list></app-products-list> -->
 
-<!-- For Homework -->
-<!-- <app-popup-host [popupTemplate]="template"></app-popup-host>
+<input matInput #popupTextInput>
+<button type="button" (click)="openPopup()">
+	Показать попап 
+</button>
+	
+<app-popup [popupTemplate]="popupTemplate" #popup></app-popup>
 
-<ng-template #template></ng-template> -->
+<ng-template #popupTemplate>
+	<h1 #popupText>Текст который отображается в попапе</h1>
+</ng-template>
