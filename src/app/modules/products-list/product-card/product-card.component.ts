@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IProduct } from '../../../shared/products/product.interface';
-import { productMock } from '../../../shared/products/product.mock';
 
 @Component({
 	selector: 'app-product-card',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { productMock } from '../../shared/products/product.mock';
+import { productsMock } from '../../shared/products/products.mock';
 
 @Component({
 	selector: 'app-products-list',
@@ -7,5 +7,5 @@ import { productMock } from '../../shared/products/product.mock';
 	styleUrls: ['./products-list.component.less'],
 })
 export class ProductsListComponent {
-	readonly productMock = productMock;
+	readonly productsMock = productsMock;
 }
