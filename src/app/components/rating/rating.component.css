@@ -1,0 +1,11 @@
+mat-grid-list {
+  width: 120px;
+}
+
+mat-icon {
+ color: #ccc;
+}
+
+.active {
+  color: orange;
+}

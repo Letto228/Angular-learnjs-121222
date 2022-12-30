@@ -1,4 +1,5 @@
-import {Component} from "@angular/core";
+import {Component, Output} from "@angular/core";
+import {products} from "./model/mocks/mock-product";
 
 @Component({
 	selector: "app-root",
@@ -7,4 +8,5 @@ import {Component} from "@angular/core";
 })
 export class AppComponent {
 	title = "Angular-learnjs-121222";
+	@Output() product = products[0];
 }
