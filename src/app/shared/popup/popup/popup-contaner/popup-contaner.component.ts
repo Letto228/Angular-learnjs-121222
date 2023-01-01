@@ -1,4 +1,4 @@
-import { Component, Input, TemplateRef, ViewChild, ViewContainerRef, OnChanges } from '@angular/core';
+import { Component, Input, TemplateRef, ViewChild, ViewContainerRef, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
 	selector: 'app-popup-contaner',
@@ -11,10 +11,12 @@ export class PopupContanerComponent implements OnChanges {
 	@ViewChild('popupContainer', { read: ViewContainerRef, static: true })
 	private popupContainer!: ViewContainerRef;
 
-	ngOnChanges() {
-		this.popupContainer.clear();
-		if (this.popupTemplate) {
-			this.popupContainer.createEmbeddedView(this.popupTemplate);
+	ngOnChanges({ popupTemplate }: SimpleChanges) {
+		if (popupTemplate) {
+			this.popupContainer.clear();
+			if (this.popupTemplate) {
+				this.popupContainer.createEmbeddedView(this.popupTemplate);
+			}
 		}
 	}
 }
