@@ -38,8 +38,6 @@
 					{
 						"selector": "interface",
 						"format": ["PascalCase"],
-						"leadingUnderscore": "allow",
-						"railingUnderscore": "allow",
 						"custom": {
 							"regex": "^I[A-Z]",
 							"match": true
