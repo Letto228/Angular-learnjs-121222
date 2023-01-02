@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, OnChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnChanges, SimpleChange, SimpleChanges, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/shared/products/product.interface';
 
 @Component({
@@ -6,16 +6,16 @@ import { IProduct } from 'src/app/shared/products/product.interface';
 	templateUrl: './product-card.component.html',
 	styleUrls: ['./product-card.component.less'],
 })
-export class ProductCardComponent implements OnChanges {
+export class ProductCardComponent implements OnInit {
 	// readonly product = productMock;
 	@Input() product: IProduct | undefined;
-	@Output() productClick = new EventEmitter<Event>();
+	@Output() productClick = new EventEmitter<string>();
 
 	public activeImageUrl: string | undefined;
 	public activeImageIndex: number | undefined;
   
 	onProductBuy(event: Event, id?: string) {
-	  this.productClick.emit(event);
+	  this.productClick.emit(id);
 	  event.stopPropagation();
   
 	  if (id) {
@@ -24,33 +24,31 @@ export class ProductCardComponent implements OnChanges {
 	}
 
 	isStarActive(starIndex: number): boolean {
-		return Boolean(this.product && this.product?.rating >= starIndex);
+		return Boolean(this.product && this.product.rating >= starIndex);
 	}
 
-	ngOnChanges() {
+	ngOnInit() {
 		this.activeImageIndex = 0;
 		this.activeImageUrl = this.product?.images[this.activeImageIndex].url;
 	}
 
-	imagesLeft() {
-		if (this.activeImageIndex == 0 && this.product?.images.length){
-			this.activeImageIndex = this.product?.images.length - 1;
-		} else if (this.activeImageIndex) {
-			this.activeImageIndex = this.activeImageIndex - 1;
-		} else {
+	changeImage(direction: number) {
+		if (typeof(this.activeImageIndex) === 'undefined') {
 			this.activeImageIndex = 0;
 		}
-		this.activeImageUrl = this.product?.images[this.activeImageIndex].url;
-	}
 
-	imagesRight() {
-		if (this.product?.images.length && this.activeImageIndex == this.product?.images.length - 1){
-			this.activeImageIndex = 0;
-		} else if (typeof(this.activeImageIndex) == 'number') {
-			this.activeImageIndex = this.activeImageIndex + 1;
-		} else {
+		let imagesLength : number = this.product ? this.product?.images.length : 0;
+
+		this.activeImageIndex = this.activeImageIndex + direction;
+		
+		if (this.activeImageIndex < 0) {
+			this.activeImageIndex = imagesLength - 1;
+		}
+
+		if (this.activeImageIndex >= imagesLength) {
 			this.activeImageIndex = 0;
 		}
+
 		this.activeImageUrl = this.product?.images[this.activeImageIndex].url;
 	}
 }
