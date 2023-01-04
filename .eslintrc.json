@@ -8,10 +8,7 @@
 				"project": ["tsconfig.json"],
 				"createDefaultProgram": true
 			},
-			"extends": [
-				"plugin:@angular-eslint/recommended",
-				"plugin:@angular-eslint/template/process-inline-templates"
-			],
+			"extends": ["plugin:@angular-eslint/recommended", "plugin:@angular-eslint/template/process-inline-templates"],
 			"rules": {
 				"@angular-eslint/directive-selector": [
 					"error",
@@ -38,6 +35,16 @@
 							"regex": "^I[A-Z]",
 							"match": true
 						}
+					}
+				],
+				"sort-imports": [
+					"error",
+					{
+						"ignoreCase": false,
+						"ignoreDeclarationSort": false,
+						"ignoreMemberSort": false,
+						"memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+						"allowSeparatedGroups": false
 					}
 				]
 			}
