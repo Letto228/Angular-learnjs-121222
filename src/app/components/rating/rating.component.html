@@ -1,13 +1,13 @@
 <mat-grid-list cols="5">
   <mat-grid-tile
-    *ngFor="let star of activeStarts; index as i;"
+    *ngFor="let star of stars"
     [colspan]="1"
     [rowspan]="1">
     <mat-icon
       aria-hidden="false"
       aria-label="star"
       fontIcon="star"
-      [class.active]="activeStarts[i]">
+      [class.active]="isActive(star)">
     </mat-icon>
   </mat-grid-tile>
 </mat-grid-list>

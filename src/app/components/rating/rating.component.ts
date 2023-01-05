@@ -7,16 +7,16 @@ import {Component, Input, OnInit, Output} from "@angular/core";
 })
 export class RatingComponent implements OnInit {
 	private DEFAULT_STARTS_NUMBER = 5;
-	@Input() value!: number;
-	@Output() activeStarts: boolean[] = [];
+	@Input() ratingValue!: number;
+	stars: number[] = [];
 
-	ngOnInit(): void {
+	ngOnInit() {
 		for (let i = 0; i < this.DEFAULT_STARTS_NUMBER; i++) {
-			if (this.value >= i + 1) {
-				this.activeStarts[i] = true;
-			} else {
-				this.activeStarts[i] = false;
-			}
+			this.stars[i] = i + 1;
 		}
+	}
+
+	isActive(star: number) {
+		return star <= this.ratingValue;
 	}
 }
