@@ -5,4 +5,8 @@ import { Component } from '@angular/core';
 	templateUrl: './products-list.component.html',
 	styleUrls: ['./products-list.component.less'],
 })
-export class ProductsListComponent {}
+export class ProductsListComponent {
+	onCardClick() {
+		console.log('Open card page');
+	}
+}
