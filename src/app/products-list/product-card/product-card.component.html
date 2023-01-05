@@ -21,7 +21,7 @@
 		<label>Price: {{ card.price }}</label>
 	</mat-card-content>
 	<mat-card-actions>
-		<button mat-button click="onItemBuy($event)" class="property">
+		<button mat-button (click)="onItemBuy($event)" class="property">
 			Buy
 		</button>
 	</mat-card-actions>
