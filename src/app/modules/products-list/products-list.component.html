@@ -1,29 +1,31 @@
-<ng-template
-	let-productsFromNgIf="ngIf"
-	[ngIf]="productsList"
-	[ngIfElse]="loader"
->
-	<!-- </ng-template> -->
-	<!-- <ng-template #content> -->
-	<!-- <ng-template [appDumpNgIf]="productsList" let-productsFromDumpNgIf="$implicit" let-containerLength="containerLength"> -->
-	<app-product-card
-		class="product"
-		[product]="productsFromNgIf[0]"
-	></app-product-card>
-	<app-product-card
-		class="product"
-		[product]="productsFromNgIf[1]"
-	></app-product-card>
-	<app-product-card
-		class="product"
-		[product]="productsFromNgIf[2]"
-	></app-product-card>
-	<app-product-card
-		class="product"
-		[product]="productsFromNgIf[3]"
-	></app-product-card>
-</ng-template>
+<div class="scroll-container">
+	<ng-template
+		let-productsFromNgIf="ngIf"
+		[ngIf]="productsList"
+		[ngIfElse]="loader"
+	>
+		<!-- </ng-template> -->
+		<!-- <ng-template #content> -->
+		<!-- <ng-template [appDumpNgIf]="productsList" let-productsFromDumpNgIf="$implicit" let-containerLength="containerLength"> -->
+		<app-product-card
+			class="product"
+			[product]="productsFromNgIf[0]"
+		></app-product-card>
+		<app-product-card
+			class="product"
+			[product]="productsFromNgIf[1]"
+		></app-product-card>
+		<app-product-card
+			class="product"
+			[product]="productsFromNgIf[2]"
+		></app-product-card>
+		<app-product-card
+			class="product"
+			[product]="productsFromNgIf[3]"
+		></app-product-card>
+	</ng-template>
 
-<ng-template #loader>
-	<mat-spinner></mat-spinner>
-</ng-template>
+	<ng-template #loader>
+		<mat-spinner></mat-spinner>
+	</ng-template>
+</div>
