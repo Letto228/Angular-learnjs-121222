@@ -8,7 +8,9 @@ import { Component, Input, TemplateRef, ViewChild, ViewContainerRef } from '@ang
 export class PopupComponent {
   @Input() set popupTemplate(template: TemplateRef<any>) {
     this.viewContainer.clear();
-    this.viewContainer.createEmbeddedView(template);
+    if (template) {
+      this.viewContainer.createEmbeddedView(template);
+    }
   }
   @ViewChild('viewContainer', { read: ViewContainerRef, static: true })
   private viewContainer!: ViewContainerRef;
