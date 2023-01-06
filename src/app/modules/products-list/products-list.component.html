@@ -1,4 +1,9 @@
-<div class="scroll-container">
+<div
+	class="scroll-container"
+	appInfiniteScroll
+	[borderOffset]="100"
+	(offsetIntersected)="onListScrolled($event)"
+>
 	<ng-template
 		let-productsFromNgIf="ngIf"
 		[ngIf]="productsList"
@@ -8,20 +13,9 @@
 		<!-- <ng-template #content> -->
 		<!-- <ng-template [appDumpNgIf]="productsList" let-productsFromDumpNgIf="$implicit" let-containerLength="containerLength"> -->
 		<app-product-card
+			*ngFor="let product of productsFromNgIf"
 			class="product"
-			[product]="productsFromNgIf[0]"
-		></app-product-card>
-		<app-product-card
-			class="product"
-			[product]="productsFromNgIf[1]"
-		></app-product-card>
-		<app-product-card
-			class="product"
-			[product]="productsFromNgIf[2]"
-		></app-product-card>
-		<app-product-card
-			class="product"
-			[product]="productsFromNgIf[3]"
+			[product]="product"
 		></app-product-card>
 	</ng-template>
 
