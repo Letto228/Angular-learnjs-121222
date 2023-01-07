@@ -3,6 +3,24 @@
 	[applicationConfig]="applicationConfig"
 	(menuClick)="sidenav.sidenavToggle()"
 ></app-header>
+
+<!-- For Homework -->
+<app-popup-host [popupTemplate]="template"></app-popup-host>
+
+<ng-template #template>
+	<div>
+		<p>WARINING!</p>
+		<button (click)="showInfoPopUp()" mat-raised-button>OK</button>
+	</div>
+</ng-template>
+
+<ng-template #templateTwo>
+	<div>
+		<p>INFO!</p>
+		<button (click)="closePopup()" mat-raised-button>OK</button>
+	</div>
+</ng-template>
+
 <!-- <app-sidenav
     [isSidenavOpened]="isSidenavOpened"
     (isSidenavOpenedChange)="isSidenavOpened = $event"
@@ -26,8 +44,3 @@
 	</ng-template>
 </app-sidenav>
 <!-- <app-products-list></app-products-list> -->
-
-<!-- For Homework -->
-<!-- <app-popup-host [popupTemplate]="template"></app-popup-host>
-
-<ng-template #template></ng-template> -->
