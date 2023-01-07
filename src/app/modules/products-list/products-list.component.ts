@@ -11,13 +11,30 @@ export class ProductsListComponent implements OnInit {
 	products: IProduct[] | null = null;
 
 	ngOnInit() {
-		setTimeout(() => {
-			this.products = productsMock;
-		}, 3000);
+		this.loadProducts();
 	}
 
 	get productsList(): IProduct[] | null {
 		console.log('calc');
 		return this.products;
+	}
+
+	public loadTopProducts(): void {
+		console.log('do nothing!');
+	}
+
+	public loadBottomProducts(): void {
+		console.log('load bottom products');
+		this.loadProducts();
+	}
+
+	private loadProducts(): void {
+		if (this.products === null) {
+			this.products = [];
+		}
+
+		setTimeout(() => {
+			this.products?.push(...productsMock);
+		}, 3000);
 	}
 }
