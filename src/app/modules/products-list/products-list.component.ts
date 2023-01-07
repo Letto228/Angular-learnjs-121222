@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../../shared/products/product.interface';
 import { productsMock } from '../../shared/products/products.mock';
+import { LoadDirection } from 'src/app/shared/infinity-scroll/infinity-scroll.directive';
 
 @Component({
 	selector: 'app-products-list',
@@ -17,7 +18,18 @@ export class ProductsListComponent implements OnInit {
 	}
 
 	get productsList(): IProduct[] | null {
-		console.log('calc');
 		return this.products;
+	}
+
+	onListLoaded(direction: LoadDirection) {
+		if (direction === LoadDirection.down) {
+			this.addProducts();
+		}
+	}
+
+	private addProducts() {
+		setTimeout(() => {
+			this.products = [...(this.products || []), ...productsMock];
+		}, 3000);
 	}
 }
