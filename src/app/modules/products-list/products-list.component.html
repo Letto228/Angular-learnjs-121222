@@ -1,1 +1,4 @@
-<app-product-card></app-product-card>
+<app-product-card
+	[product]="product"
+	(productBuyClick)="productBuyClick($event)"
+></app-product-card>
