@@ -3,6 +3,8 @@ import { IProductImage } from './product-image.interface';
 export interface IProduct {
 	_id: string;
 	name: string;
+	brief: string;
+	description: string;
 	price: number;
 	images: IProductImage[];
 	subCategory: string;
