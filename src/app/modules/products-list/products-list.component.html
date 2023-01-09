@@ -1,8 +1,7 @@
 <div
 	class="scroll-container"
 	appInfiniteScroll
-	(bottomReached)="loadBottomProducts()"
-	(topReached)="loadTopProducts()"
+	(loadData)="loadProducts($event)"
 >
 	<ng-template
 		let-productsFromNgIf="ngIf"
