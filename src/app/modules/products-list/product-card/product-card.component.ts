@@ -9,10 +9,10 @@ import { IProduct } from '../../../shared/products/product.interface';
 export class ProductCardComponent {
 	@Input() product: IProduct | undefined;
 
-	@Output() productBuyClick = new EventEmitter<Event>();
+	@Output() productBuyClick = new EventEmitter<string>();
 
-	onProductBuy(event: Event) {
-		this.productBuyClick.emit(event);
+	onProductBuy(event: Event, id: string | undefined) {
+		this.productBuyClick.emit(id);
 		event.stopPropagation();
 		console.log('Buy');
 	}

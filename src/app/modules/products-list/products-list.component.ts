@@ -9,7 +9,7 @@ import { productMock } from '../../shared/products/product.mock';
 export class ProductsListComponent {
 	readonly product = productMock;
 
-	productBuyClick(event: Event) {
-		console.log(event);
+	productBuyClick(id: string) {
+		console.log(id);
 	}
 }
