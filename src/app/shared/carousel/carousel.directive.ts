@@ -5,6 +5,8 @@ interface ICarouselContext<T> {
 	$implicit: T;
 	next: () => void;
 	back: () => void;
+	appCarousel: T[] | undefined;
+	appCarouselVisibility: boolean | undefined;
 }
 
 @Directive({
@@ -12,6 +14,7 @@ interface ICarouselContext<T> {
 })
 export class CarouselDirective<T> implements OnChanges, OnInit {
 	@Input() appCarousel: T[] | undefined;
+	@Input() appCarouselVisibility: boolean | undefined;
 
 	private readonly currentIndex$ = new BehaviorSubject<number>(0);
 
@@ -47,6 +50,8 @@ export class CarouselDirective<T> implements OnChanges, OnInit {
 	private getCurrentContext(currentIndex: number): ICarouselContext<T> {
 		return {
 			$implicit: (this.appCarousel as T[])[currentIndex],
+			appCarousel: this.appCarousel,
+			appCarouselVisibility: this.appCarouselVisibility,
 			next: () => {
 				this.next();
 			},

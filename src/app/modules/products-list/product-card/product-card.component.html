@@ -3,21 +3,32 @@
 		<mat-card-title>{{ product.name }}</mat-card-title>
 		<mat-card-subtitle>{{ product.price }} $</mat-card-subtitle>
 	</mat-card-header>
-	<div class="galerey">
-		<ng-template
+	<div
+		*appCarousel="
+			product.images as images;
+			visibility: true as visibilityFromContext;
+			let next = next;
+			let back = back;
+			let currentImage
+		"
+		class="galerey"
+	>
+		<!-- <ng-template
 			let-currentImage
 			let-next="next"
 			let-back="back"
 			[appCarousel]="product.images"
-		>
-			<button mat-icon-button (click)="back()">
-				<mat-icon> chevron_left </mat-icon>
-			</button>
-			<img mat-card-image alt="Product photo" [src]="currentImage.url" />
-			<button mat-icon-button (click)="next()">
-				<mat-icon> chevron_right </mat-icon>
-			</button>
-		</ng-template>
+		> -->
+		<!-- {{images.length}} -->
+		<!-- {{visibilityFromContext}} -->
+		<button mat-icon-button (click)="back()">
+			<mat-icon> chevron_left </mat-icon>
+		</button>
+		<img mat-card-image alt="Product photo" [src]="currentImage.url" />
+		<button mat-icon-button (click)="next()">
+			<mat-icon> chevron_right </mat-icon>
+		</button>
+		<!-- </ng-template> -->
 	</div>
 	<mat-card-content>
 		<p>Отзывы: {{ product.feedbacksCount }}</p>
