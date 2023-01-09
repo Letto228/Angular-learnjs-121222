@@ -16,13 +16,4 @@ export class ProductsListComponent implements OnInit {
 			this.products = productsMock;
 		}, 3000);
 	}
-
-	get productsList(): IProduct[] | null {
-		console.log('calc');
-		return this.products;
-	}
-
-	onLoadData(direction: LoadDirection) {
-		console.log(`Load - ${direction}`);
-	}
 }

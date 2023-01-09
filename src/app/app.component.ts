@@ -8,10 +8,4 @@ import { applicationConfigMock } from './shared/application-config/application-c
 })
 export class AppComponent {
 	readonly applicationConfig = applicationConfigMock;
-
-	// isSidenavOpened = false;
-
-	// onMenuClick() {
-	// 	this.isSidenavOpened = !this.isSidenavOpened;
-	// }
 }

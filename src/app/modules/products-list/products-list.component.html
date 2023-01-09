@@ -1,11 +1,7 @@
-<div
-	appScrollWithLoading
-	class="scroll-container"
-	(loadData)="onLoadData($event)"
->
+<div class="scroll-container">
 	<ng-template
 		let-productsFromNgIf="ngIf"
-		[ngIf]="productsList"
+		[ngIf]="products"
 		[ngIfElse]="loader"
 	>
 		<!-- </ng-template> -->
