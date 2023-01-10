@@ -24,11 +24,6 @@ export class ProductCardComponent {
 	}
 
 	getImageUrl(): string {
-		const hasImage = this.product && this.product.images.length > 0;
-		if (hasImage) {
-			return this.product?.images[0]?.url ?? '';
-		}
-
-		return '';
+		return this.product && this.product.images.length > 0 ? this.product.images[0].url : '';
 	}
 }

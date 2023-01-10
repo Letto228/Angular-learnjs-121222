@@ -7,11 +7,7 @@
 		<button mat-icon-button>
 			<mat-icon> chevron_left </mat-icon>
 		</button>
-		<img
-			mat-card-image
-			alt="Product photo"
-			[src]="product && product.images ? product.images[0].url : ''"
-		/>
+		<img mat-card-image alt="Product photo" [src]="getImageUrl()" />
 		<button mat-icon-button>
 			<mat-icon> chevron_right </mat-icon>
 		</button>
