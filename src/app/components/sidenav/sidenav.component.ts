@@ -43,7 +43,7 @@ export class SidenavComponent implements OnInit, AfterContentInit {
 	private pElement!: QueryList<ElementRef<HTMLElement>>;
 
 	ngOnInit() {
-		console.log(this.pElement);
+		console.log();
 	}
 
 	// ngAfterViewInit() {
@@ -52,8 +52,8 @@ export class SidenavComponent implements OnInit, AfterContentInit {
 	// }
 
 	ngAfterContentInit() {
-		console.log(this.pElement);
-		console.log(this.pElement.map(({ nativeElement }) => nativeElement.innerHTML));
+		console.log();
+		// console.log(this.pElement.map(({ nativeElement }) => nativeElement.innerHTML));
 	}
 
 	sidenavToggle() {
