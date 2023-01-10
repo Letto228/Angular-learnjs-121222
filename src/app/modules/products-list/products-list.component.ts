@@ -17,7 +17,10 @@ export class ProductsListComponent implements OnInit {
 	}
 
 	get productsList(): IProduct[] | null {
-		console.log('calc');
 		return this.products;
+	}
+
+	loadData(event: string) {
+		console.log('loadData', event);
 	}
 }
