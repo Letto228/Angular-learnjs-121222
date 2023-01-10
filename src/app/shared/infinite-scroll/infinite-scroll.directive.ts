@@ -1,9 +1,5 @@
 import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
-
-export enum ScrollDirection {
-	up = 'up',
-	down = 'down',
-}
+import { ScrollDirectionEnum } from './scroll-direction.enum';
 
 @Directive({
 	selector: '[appInfiniteScroll]',
@@ -12,26 +8,24 @@ export class InfiniteScrollDirective {
 	@Input() borderOffset = 0;
 	@HostListener('scroll', ['$event.target'])
 	private onScroll(element: HTMLElement) {
-		const directionUp = element.scrollTop <= this.borderOffset;
-		const directionDown = element.scrollHeight - element.scrollTop - element.offsetHeight <= this.borderOffset;
-		const hostUpdated = element.scrollHeight !== this.previousScrollHeight;
+		const previousTopLower = element.scrollTop < this.previousScrollTop;
+		const previousTopGreater = element.scrollTop > this.previousScrollTop;
+		const intersectedTopBorder = element.scrollTop <= this.borderOffset && previousTopLower;
+		const intersectedBottomBorder =
+			element.scrollHeight - element.scrollTop - element.clientHeight <= this.borderOffset && previousTopGreater;
 
-		const updateOnScrollUp = this.previousDirection === ScrollDirection.down;
-		const updateOnScrollDown =
-			this.previousDirection === ScrollDirection.up || !this.previousDirection || hostUpdated;
+		this.previousScrollTop = element.scrollTop;
 
-		if (directionUp && updateOnScrollUp) {
-			this.offsetIntersected.emit(ScrollDirection.up);
-			this.previousDirection = ScrollDirection.up;
-		} else if (directionDown && updateOnScrollDown) {
-			this.offsetIntersected.emit(ScrollDirection.down);
-			this.previousDirection = ScrollDirection.down;
-			this.previousScrollHeight = element.scrollHeight;
+		if (intersectedTopBorder && previousTopLower) {
+			this.offsetIntersected.emit(ScrollDirectionEnum.up);
+		}
+
+		if (intersectedBottomBorder && previousTopGreater) {
+			this.offsetIntersected.emit(ScrollDirectionEnum.down);
 		}
 	}
 
-	@Output() offsetIntersected: EventEmitter<ScrollDirection> = new EventEmitter<ScrollDirection>();
+	@Output() offsetIntersected: EventEmitter<ScrollDirectionEnum> = new EventEmitter<ScrollDirectionEnum>();
 
-	private previousDirection?: ScrollDirection;
-	private previousScrollHeight?: number;
+	private previousScrollTop = -1;
 }
