@@ -7,28 +7,58 @@
 		*ngIf="products as productsFromNgIf; else loader; let productsFromNgIf = ngIf"
 		class="scroll-container"
 	> -->
-<div *ngIf="products as productsFromNgIf; else loader" class="scroll-container">
-	<!-- 
-		<ng-template [ngIf]="products" [ngIfElse]="loader" let-productsFromNgIf="ngIf">
-			<div class="scroll-container">
-	 -->
+<div
+	*appPaginator="
+		products;
+		perPage: 3;
+		let next = next;
+		let back = back;
+		let toPage = toPage;
+		let productsOnPage;
+		let size = size;
+		let currentPage = currentPage
+	"
+>
+	<button mat-raised-button (click)="back()">
+		<mat-icon> chevron_left </mat-icon>
+	</button>
+	<button
+		mat-raised-button
+		[disabled]="currentPage === index"
+		(click)="toPage(index)"
+		*ngFor="let _ of [].constructor(size); let index = index"
+	>
+		{{ index + 1 }}
+	</button>
+	<button mat-raised-button (click)="next()">
+		<mat-icon> chevron_right </mat-icon>
+	</button>
+	<div
+		*ngIf="productsOnPage as productsFromNgIf; else loader"
+		class="scroll-container"
+	>
+		<!--
+			<ng-template [ngIf]="products" [ngIfElse]="loader" let-productsFromNgIf="ngIf">
+				<div class="scroll-container">
+		 -->
 
-	<!-- </ng-template> -->
-	<!-- <ng-template #content> -->
-	<!-- <ng-template [appDumpNgIf]="productsList" let-productsFromDumpNgIf="$implicit" let-containerLength="containerLength"> -->
-	<app-product-card
-		*ngFor="
-			let product of productsFromNgIf;
-			let index = index;
-			trackBy: trackById;
-			let first = first;
-			let last = last;
-			let even = even;
-			let odd = odd
-		"
-		class="product"
-		[product]="product"
-	></app-product-card>
+		<!-- </ng-template> -->
+		<!-- <ng-template #content> -->
+		<!-- <ng-template [appDumpNgIf]="productsList" let-productsFromDumpNgIf="$implicit" let-containerLength="containerLength"> -->
+		<app-product-card
+			*ngFor="
+				let product of productsFromNgIf;
+				let index = index;
+				trackBy: trackById;
+				let first = first;
+				let last = last;
+				let even = even;
+				let odd = odd
+			"
+			class="product"
+			[product]="product"
+		></app-product-card>
+	</div>
 </div>
 <!-- </ng-template> -->
 
