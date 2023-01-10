@@ -8,14 +8,14 @@ import { IProduct } from 'src/app/shared/products/product.interface';
 })
 export class ProductCardComponent {
 	@Input() product: IProduct | undefined;
-	@Output() buyClick = new EventEmitter<Event>();
+	@Output() buyClick = new EventEmitter<IProduct['_id'] | undefined>();
 
 	onProductBuy(event: Event) {
 		event.stopPropagation();
-		this.buyClick.emit(event);
+		this.buyClick.emit(this.product?._id);
 	}
 
 	isStarActive(starIndex: number): boolean {
-		return Boolean(this.product && this.product?.rating >= starIndex);
+		return Boolean(this.product && this.product.rating >= starIndex);
 	}
 }
