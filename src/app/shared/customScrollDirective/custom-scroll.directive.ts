@@ -14,7 +14,6 @@ export class CustomInfinityScrollDirective {
 	private onScroll(target: HTMLElement): void {
 		const isTopReached = target.scrollTop < this.offset;
 		const isBottomReached = target.scrollHeight - target.clientHeight - target.scrollTop < this.offset;
-		console.log('isBottomReached', isBottomReached);
 
 		const scrollDirectionDown = target.scrollTop < this.topScrolled;
 
