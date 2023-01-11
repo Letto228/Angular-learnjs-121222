@@ -1,1 +1,4 @@
-<app-product-card></app-product-card>
+<app-product-card
+	[cardInfo]="cardInfo"
+	(isProductBoughtChange)="onProductBought($event)"
+></app-product-card>
