@@ -15,9 +15,15 @@ export class PopupComponent {
   @ViewChild('viewContainer', { read: ViewContainerRef, static: true })
   private viewContainer!: ViewContainerRef;
 
-  public visible = false;
+  public visible = true;
 
-  toggle() {
-    this.visible = !this.visible;
+  toggle(template: TemplateRef<any> | undefined) {
+    if (template && !this.visible) {
+      this.viewContainer.createEmbeddedView(template);
+      this.visible = !this.visible;
+    } else {
+      this.viewContainer.clear();
+      this.visible = !this.visible;
+    }
   }
 }

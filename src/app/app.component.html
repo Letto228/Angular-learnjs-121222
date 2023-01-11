@@ -27,7 +27,6 @@
 </app-sidenav>
 <!-- <app-products-list></app-products-list> -->
 
-<input matInput #popupTextInput>
 <button type="button" (click)="openPopup()">
 	Показать попап 
 </button>
@@ -35,5 +34,5 @@
 <app-popup [popupTemplate]="popupTemplate" #popup></app-popup>
 
 <ng-template #popupTemplate>
-	<h1 #popupText>Текст который отображается в попапе</h1>
+	<h1>Текст который отображается в попапе</h1>
 </ng-template>
