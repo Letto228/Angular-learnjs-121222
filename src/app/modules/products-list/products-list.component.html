@@ -1,4 +1,8 @@
-<div class="scroll-container">
+<div 
+	appScroller
+	class="scroll-container"
+	(loadData)="loadData($event)"
+>
 	<ng-template
 		let-productsFromNgIf="ngIf"
 		[ngIf]="productsList"
@@ -8,10 +12,11 @@
 		<!-- <ng-template #content> -->
 		<!-- <ng-template [appDumpNgIf]="productsList" let-productsFromDumpNgIf="$implicit" let-containerLength="containerLength"> -->
 		<app-product-card
+			*ngFor="let product of productsFromNgIf"
 			class="product"
-			[product]="productsFromNgIf[0]"
+			[product]="product"
 		></app-product-card>
-		<app-product-card
+		<!-- <app-product-card
 			class="product"
 			[product]="productsFromNgIf[1]"
 		></app-product-card>
@@ -22,7 +27,7 @@
 		<app-product-card
 			class="product"
 			[product]="productsFromNgIf[3]"
-		></app-product-card>
+		></app-product-card> -->
 	</ng-template>
 
 	<ng-template #loader>
