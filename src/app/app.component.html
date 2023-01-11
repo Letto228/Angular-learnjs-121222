@@ -8,6 +8,9 @@
     (isSidenavOpenedChange)="isSidenavOpened = $event"
 ></app-sidenav> -->
 <!-- <app-sidenav [(isSidenavOpened)]="isSidenavOpened"></app-sidenav> -->
+
+<app-popup-host [popupTemplate]="dialogTemplate"></app-popup-host>
+
 <app-sidenav #sidenav>
 	<p>Hello</p>
 	<input />
@@ -28,6 +31,13 @@
 <!-- <app-products-list></app-products-list> -->
 
 <!-- For Homework -->
-<!-- <app-popup-host [popupTemplate]="template"></app-popup-host>
 
-<ng-template #template></ng-template> -->
+<ng-template #dialogTemplate>
+	<h4>ToDo List</h4>
+	<mat-list role="list">
+		<mat-list-item role="listitem">Lecture 7</mat-list-item>
+		<mat-list-item role="listitem">Lecture 8</mat-list-item>
+		<mat-list-item role="listitem">Lecture 9</mat-list-item>
+		<mat-list-item role="listitem">...</mat-list-item>
+	</mat-list>
+</ng-template>
