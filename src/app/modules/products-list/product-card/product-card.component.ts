@@ -7,6 +7,8 @@ import { IProduct } from 'src/app/shared/products/product.interface';
 	styleUrls: ['./product-card.component.less'],
 })
 export class ProductCardComponent implements OnInit {
+	readonly prevPicture: number = -1;
+	readonly nextPicture: number = 1;
 	// readonly product = productMock;
 	@Input() product: IProduct | undefined;
 	@Output() productClick = new EventEmitter<string>();
@@ -37,7 +39,7 @@ export class ProductCardComponent implements OnInit {
 			this.activeImageIndex = 0;
 		}
 
-		let imagesLength : number = this.product ? this.product?.images.length : 0;
+		const imagesLength : number = this.product ? this.product?.images.length : 0;
 
 		this.activeImageIndex = this.activeImageIndex + direction;
 		

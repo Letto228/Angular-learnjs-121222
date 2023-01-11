@@ -4,11 +4,11 @@
 		<mat-card-subtitle>{{ product?.price }} $</mat-card-subtitle>
 	</mat-card-header>
 	<div class="galerey">
-		<button mat-icon-button (click)="changeImage(-1)">
+		<button mat-icon-button (click)="changeImage(prevPicture)">
 			<mat-icon> chevron_left </mat-icon>
 		</button>
 		<img mat-card-image alt="Product photo" [src]="activeImageUrl" />
-		<button mat-icon-button (click)="changeImage(1)">
+		<button mat-icon-button (click)="changeImage(nextPicture)">
 			<mat-icon> chevron_right </mat-icon>
 		</button>
 	</div>
