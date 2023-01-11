@@ -1,14 +1,14 @@
 <mat-card class="example-card">
 	<mat-card-header class="card-header">
-		<div mat-card-avatar class="example-header-image"></div>
+		<div
+			mat-card-avatar
+			class="example-header-image"
+			[style.background-image]="getCardAvatar()"
+		></div>
 		<mat-card-title>{{ card.name }}</mat-card-title>
 		<mat-card-subtitle>{{ card.subCategory }}</mat-card-subtitle>
 	</mat-card-header>
-	<img
-		mat-card-image
-		class="card-image"
-		[src]="card.images.length > 0 ? card.images[imageIndex].url : ''"
-	/>
+	<img mat-card-image class="card-image" [src]="getCardImage(imageIndex)" />
 	<mat-card-actions>
 		<button mat-icon-button color="primary" (click)="nextImage($event)">
 			<mat-icon>keyboard_arrow_left</mat-icon>
