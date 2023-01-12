@@ -5,22 +5,13 @@
 	</mat-card-header>
 	<div
 		*appCarousel="
-			product.images as images;
-			visibility: true as visibilityFromContext;
+			product.images;
+			let currentImage;
 			let next = next;
-			let back = back;
-			let currentImage
+			let back = back
 		"
 		class="galerey"
 	>
-		<!-- <ng-template
-			let-currentImage
-			let-next="next"
-			let-back="back"
-			[appCarousel]="product.images"
-		> -->
-		<!-- {{images.length}} -->
-		<!-- {{visibilityFromContext}} -->
 		<button mat-icon-button (click)="back()">
 			<mat-icon> chevron_left </mat-icon>
 		</button>
@@ -28,7 +19,6 @@
 		<button mat-icon-button (click)="next()">
 			<mat-icon> chevron_right </mat-icon>
 		</button>
-		<!-- </ng-template> -->
 	</div>
 	<mat-card-content>
 		<p>Отзывы: {{ product.feedbacksCount }}</p>
