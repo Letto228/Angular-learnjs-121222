@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../../shared/products/product.interface';
 import { productsMock } from '../../shared/products/products.mock';
-import { LoadDirection } from 'src/app/shared/infinity-scroll/scroll-direction.enum';
+import { loadDirection } from 'src/app/shared/infinity-scroll/scroll-direction.enum';
 
 @Component({
 	selector: 'app-products-list',
@@ -21,8 +21,8 @@ export class ProductsListComponent implements OnInit {
 		return this.products;
 	}
 
-	onListLoaded(direction: LoadDirection) {
-		if (direction === LoadDirection.down) {
+	onListLoaded(direction: loadDirection) {
+		if (direction === loadDirection.down) {
 			this.addProducts();
 		}
 	}

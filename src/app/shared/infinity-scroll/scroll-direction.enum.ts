@@ -1,4 +1,4 @@
-export enum LoadDirection {
+export enum loadDirection {
 	up = 'up',
 	down = 'down',
 }
