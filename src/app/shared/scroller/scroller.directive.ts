@@ -26,8 +26,9 @@ export class ScrollerDirective {
 
 		this.topOffset = target.scrollTop;
 
-    if (scrollDirection === ScrollDirection.Up && isFirstTop) return this.loadData.emit(ScrollDirection.Up);
-    if (scrollDirection === ScrollDirection.Down && isFirstBottom) return this.loadData.emit(ScrollDirection.Down);
+    if (isFirstTop || isFirstBottom) { 
+      return this.loadData.emit(scrollDirection);
+    }
   }
 
 }
