@@ -31,8 +31,13 @@
 	Показать попап 
 </button>
 	
-<app-popup [popupTemplate]="popupTemplate" #popup></app-popup>
+<app-popup [popupTemplate]="popupTemplate" #popup [class]="popupClass"></app-popup>
 
 <ng-template #popupTemplate>
-	<h1>Текст который отображается в попапе</h1>
+    <div class="popup-content">
+		<h1>Текст который отображается в попапе</h1>
+		<button type="button" (click)="openPopup()">
+			Скрыть попап 
+		</button>
+	</div>
 </ng-template>

@@ -6,7 +6,7 @@ import { Component, Input, TemplateRef, ViewChild, ViewContainerRef } from '@ang
   styleUrls: ['./popup.component.less']
 })
 export class PopupComponent {
-  @Input() set popupTemplate(template: TemplateRef<any>) {
+  @Input() set popupTemplate(template: TemplateRef<any> | undefined) {
     this.viewContainer.clear();
     if (template) {
       this.viewContainer.createEmbeddedView(template);
@@ -20,10 +20,10 @@ export class PopupComponent {
   toggle(template: TemplateRef<any> | undefined) {
     if (template && !this.visible) {
       this.viewContainer.createEmbeddedView(template);
-      this.visible = !this.visible;
     } else {
       this.viewContainer.clear();
-      this.visible = !this.visible;
     }
+
+    this.visible = !this.visible;
   }
 }

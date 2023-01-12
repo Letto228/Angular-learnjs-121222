@@ -9,6 +9,7 @@ import { PopupComponent } from './shared/popup/popup.component';
 })
 export class AppComponent {
 	readonly applicationConfig = applicationConfigMock;
+	public popupClass: string = "";
 
 	// isSidenavOpened = false;
 
@@ -24,5 +25,8 @@ export class AppComponent {
 	
 	openPopup() {
 		this.popup?.toggle(this.popupTemplate);
+
+		if (!this.popup?.visible) this.popupClass = "empty";
+		else this.popupClass = "";
 	}
 }
