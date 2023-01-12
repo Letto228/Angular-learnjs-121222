@@ -1,5 +1,14 @@
-import { Directive, Input, OnChanges, OnInit, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';
-import { BehaviorSubject, map } from 'rxjs';
+import {
+	Directive,
+	Input,
+	OnChanges,
+	OnDestroy,
+	OnInit,
+	SimpleChanges,
+	TemplateRef,
+	ViewContainerRef,
+} from '@angular/core';
+import { BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
 
 interface IPaginatorContext<T> {
 	$implicit: T[];
@@ -14,12 +23,13 @@ interface IPaginatorContext<T> {
 @Directive({
 	selector: '[appPaginator]',
 })
-export class PaginatorDirective<T> implements OnChanges, OnInit {
+export class PaginatorDirective<T> implements OnChanges, OnInit, OnDestroy {
 	@Input() appPaginator: T[] | undefined | null;
 	@Input() appPaginatorPerPage = 1;
 
 	private readonly currentPage$ = new BehaviorSubject<number>(0);
 	private pages: T[][] = [];
+	private destroy$: Subject<void> = new Subject<void>();
 
 	constructor(private viewContainerRef: ViewContainerRef, private templateRef: TemplateRef<IPaginatorContext<T>>) {}
 
@@ -34,6 +44,11 @@ export class PaginatorDirective<T> implements OnChanges, OnInit {
 		this.listenCurrentPageChange();
 	}
 
+	public ngOnDestroy(): void {
+		this.destroy$.next();
+		this.destroy$.complete();
+	}
+
 	private updateView() {
 		if (!this.appPaginator?.length) {
 			this.viewContainerRef.clear();
@@ -45,10 +60,15 @@ export class PaginatorDirective<T> implements OnChanges, OnInit {
 	}
 
 	private listenCurrentPageChange() {
-		this.currentPage$.pipe(map(currentPage => this.getCurrentContext(currentPage))).subscribe(context => {
-			this.viewContainerRef.clear();
-			this.viewContainerRef.createEmbeddedView(this.templateRef, context);
-		});
+		this.currentPage$
+			.pipe(
+				map(currentPage => this.getCurrentContext(currentPage)),
+				takeUntil(this.destroy$),
+			)
+			.subscribe(context => {
+				this.viewContainerRef.clear();
+				this.viewContainerRef.createEmbeddedView(this.templateRef, context);
+			});
 	}
 
 	private getCurrentContext(currentPage: number): IPaginatorContext<T> {
