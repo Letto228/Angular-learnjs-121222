@@ -6,8 +6,8 @@ import { Component, Input, TemplateRef, ViewChild, ViewContainerRef } from '@ang
 	styleUrls: ['./popup-host.component.less'],
 })
 export class PopupHostComponent {
-	@Input() set popupTemplate(template: TemplateRef<unknown>) {
-		this.viewContainer?.clear();
+	@Input() set popupTemplate(template: TemplateRef<unknown> | undefined) {
+		this.viewContainer.clear();
 		if (template) {
 			this.viewContainer?.createEmbeddedView(template);
 		}
