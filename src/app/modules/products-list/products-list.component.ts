@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { IProduct } from '../../shared/products/product.interface';
+import { ProductsStoreService } from '../../shared/products/products-store.service';
 import { productsMock } from '../../shared/products/products.mock';
+import { toJSON } from '../../shared/to-json/to-json';
 
 @Component({
 	selector: 'app-products-list',
@@ -9,18 +11,40 @@ import { productsMock } from '../../shared/products/products.mock';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent implements OnInit {
-	products: IProduct[] | null = null;
+	// readonly productsStoreService = new ProductsStoreService();
+	readonly products$ = this.productsStoreService.products$;
 
-	constructor(private changeDetectorRef: ChangeDetectorRef) {}
+	filterValue: any;
+	filterName = '';
+
+	constructor(
+		// @Inject(ChangeDetectorRef) private changeDetectorRef: ChangeDetectorRef,
+		// @Inject(ProductsStoreService) private productsStoreService: ProductsStoreService,
+		// @Inject('ProductsStoreService') private productsStoreServiceString: ProductsStoreService,
+		// @Inject('value') private value: IProduct,
+		// @Inject('second') private second: number,
+		// @Inject('multi') private multi: number[],
+		// private changeDetectorRef: ChangeDetectorRef,
+		private productsStoreService: ProductsStoreService,
+	) {
+		// console.log(this.productsStoreService === this.productsStoreServiceString);
+		// console.log(this.productsStoreServiceString);
+		// console.log(this.value);
+		// console.log(this.second);
+		// console.log(this.multi);
+	}
 
 	ngOnInit() {
-		setTimeout(() => {
-			this.products = productsMock;
-			this.changeDetectorRef.markForCheck();
-		}, 3000);
+		this.productsStoreService.loadProducts();
+		// setTimeout(() => {
+		// 	this.products = productsMock;
+		// 	this.changeDetectorRef.markForCheck();
+		// }, 3000);
 	}
 
 	trackById(_: number, item: IProduct) {
 		return item._id;
 	}
+
+	getJson = toJSON;
 }

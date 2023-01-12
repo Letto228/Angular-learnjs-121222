@@ -1,4 +1,7 @@
-<div *ngIf="products as productsFromNgIf; else loader" class="scroll-container">
+<div
+	*ngIf="products$ | async as products; else loader"
+	class="scroll-container"
+>
 	<ng-container
 		*appPagination="
 			let productsGroup of products;
@@ -10,6 +13,30 @@
 			let selectIndex = selectIndex
 		"
 	>
+		<!-- посложнее
+		<ng-container
+		*appPagination="
+			let productsGroup of (products | filterByParam : this.filterValue : 'rating');
+			elementsSize: 4;
+			let allIndexes = allIndexes;
+			let activeIndex = index;
+			let next = next;
+			let back = back;
+			let selectIndex = selectIndex
+		"
+	> -->
+		<!-- попроще 
+		<ng-container
+		*appPagination="
+			let productsGroup of (products | filterProductByName : this.filterName);
+			elementsSize: 4;
+			let allIndexes = allIndexes;
+			let activeIndex = index;
+			let next = next;
+			let back = back;
+			let selectIndex = selectIndex
+		"
+	> -->
 		<div class="card-container">
 			<app-product-card
 				*ngFor="
@@ -24,6 +51,11 @@
 				class="product"
 				[product]="product"
 			></app-product-card>
+			<!-- <p *ngFor="let product of productsGroup"> -->
+			<!-- {{getJson(product)}} -->
+			<!-- {{product | json}} -->
+			<!-- {{ToJsonPipe.transform(product)}} -->
+			<!-- </p> -->
 		</div>
 
 		<div class="pagination-container">

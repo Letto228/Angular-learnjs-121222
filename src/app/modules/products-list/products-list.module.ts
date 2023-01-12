@@ -6,6 +6,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { PaginationModule } from '../../shared/pagination/pagination.module';
+import { ToJsonModule } from '../../shared/to-json/to-json.module';
 
 @NgModule({
 	declarations: [ProductsListComponent],
@@ -16,6 +17,7 @@ import { PaginationModule } from '../../shared/pagination/pagination.module';
 		MatIconModule,
 		MatButtonModule,
 		PaginationModule,
+		ToJsonModule,
 	],
 	exports: [ProductsListComponent],
 })
