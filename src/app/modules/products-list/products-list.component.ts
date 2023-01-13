@@ -17,29 +17,15 @@ export class ProductsListComponent implements OnInit, DoCheck {
 	constructor(private applicationRef: ApplicationRef, private changeDetectorRef: ChangeDetectorRef) {}
 
 	ngOnInit() {
-		this.changeDetectorRef.detach();
-		this.changeDetectorRef.detectChanges();
-
 		setTimeout(() => {
 			this.products = productsMock;
 			this.changeDetectorRef.detectChanges();
-			// this.changeDetectorRef.markForCheck();
 		}, 3000);
 
 		setTimeout(() => {
-			this.products = [...productsMock].map(item => ({ ...item, rating: 3 }));
-			// this.changeDetectorRef.detectChanges();
-			// this.changeDetectorRef.markForCheck();
-		}, 6000);
-
-		setTimeout(() => {
-			this.changeDetectorRef.reattach();
+			this.products = [...productsMock].reverse().map(item => ({ ...item, rating: 3 }));
 			this.changeDetectorRef.markForCheck();
-		}, 7000);
-
-		// setInterval(() => {
-		// this.applicationRef.tick();
-		// }, 50)
+		}, 6000);
 	}
 
 	ngDoCheck(): void {
@@ -48,5 +34,9 @@ export class ProductsListComponent implements OnInit, DoCheck {
 
 	trackById(index: number, item: IProduct) {
 		return item._id;
+	}
+
+	getPaginationPages(pagesLength: number): number[] {
+		return Array.from({ length: pagesLength }, (_, i) => ++i);
 	}
 }

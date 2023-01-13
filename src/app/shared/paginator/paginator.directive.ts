@@ -35,8 +35,8 @@ export class PaginatorDirective<T> implements OnChanges, OnInit, OnDestroy {
 
 	ngOnChanges({ appPaginator, appPaginatorPerPage }: SimpleChanges) {
 		if (appPaginator || appPaginatorPerPage) {
-			this.updateView();
 			this.sliceChunks();
+			this.updateView();
 		}
 	}
 

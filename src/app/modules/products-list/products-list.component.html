@@ -26,9 +26,9 @@
 		mat-raised-button
 		[disabled]="currentPage === index"
 		(click)="toPage(index)"
-		*ngFor="let _ of [].constructor(size); let index = index"
+		*ngFor="let page of getPaginationPages(size); let index = index"
 	>
-		{{ index + 1 }}
+		{{ page }}
 	</button>
 	<button mat-raised-button (click)="next()">
 		<mat-icon> chevron_right </mat-icon>
