@@ -14,7 +14,9 @@ export class PopupHostComponent implements OnChanges {
 	@Input() set popupTemplate(popupTemplate: TemplateRef<unknown>) {
 		this._popupTemplate = popupTemplate;
 		this.popupContainer?.clear();
-		this.popupContainer?.createEmbeddedView(this._popupTemplate);
+		if (popupTemplate !== undefined) {
+			this.popupContainer?.createEmbeddedView(this._popupTemplate);
+		}
 	}
 
 	ngOnChanges({ popupTemplate }: SimpleChanges) {
