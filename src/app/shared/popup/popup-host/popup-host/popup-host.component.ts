@@ -5,7 +5,7 @@ import { Component, Input, OnChanges, SimpleChanges, TemplateRef, ViewChild, Vie
 	templateUrl: './popup-host.component.html',
 	styleUrls: ['./popup-host.component.less'],
 })
-export class PopupHostComponent implements OnChanges {
+export class PopupHostComponent {
 	@ViewChild('popupContainer', { read: ViewContainerRef, static: true })
 	private popupContainer: ViewContainerRef | undefined;
 
@@ -17,10 +17,6 @@ export class PopupHostComponent implements OnChanges {
 		if (popupTemplate !== undefined) {
 			this.popupContainer?.createEmbeddedView(this._popupTemplate);
 		}
-	}
-
-	ngOnChanges({ popupTemplate }: SimpleChanges) {
-		this.popupTemplate = popupTemplate.currentValue;
 	}
 
 	closePopup() {
