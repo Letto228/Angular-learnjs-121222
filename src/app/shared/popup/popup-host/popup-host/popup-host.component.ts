@@ -7,7 +7,7 @@ import { Component, Input, OnChanges, SimpleChanges, TemplateRef, ViewChild, Vie
 })
 export class PopupHostComponent implements OnChanges {
 	@ViewChild('popupContainer', { read: ViewContainerRef, static: true })
-	private popupContainer!: ViewContainerRef;
+	private popupContainer: ViewContainerRef | undefined;
 
 	@Input() _popupTemplate!: TemplateRef<unknown> | undefined;
 
