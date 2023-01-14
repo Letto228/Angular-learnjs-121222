@@ -10,4 +10,8 @@
     </div>
 </ng-template> -->
 
-<ng-container #popupContainer></ng-container>
+<!-- <ng-container #popupContainer></ng-container> -->
+
+<div class="popup" [class.hide]="_popupTemplate === undefined">
+	<ng-container #popupContainer></ng-container>
+</div>
