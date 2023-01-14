@@ -6,10 +6,7 @@
 		<mat-card-subtitle>{{ product?.price ?? 0 }} $</mat-card-subtitle>
 	</mat-card-header>
 	<div class="galerey">
-		<button
-			[disabled]="product === undefined ? true : false"
-			mat-icon-button
-		>
+		<button [disabled]="product === undefined" mat-icon-button>
 			<mat-icon> chevron_left </mat-icon>
 		</button>
 		<img
@@ -17,10 +14,7 @@
 			alt="Product photo"
 			[src]="product?.images?.[0]?.url"
 		/>
-		<button
-			[disabled]="product === undefined ? true : false"
-			mat-icon-button
-		>
+		<button [disabled]="product === undefined" mat-icon-button>
 			<mat-icon> chevron_right </mat-icon>
 		</button>
 	</div>
@@ -39,7 +33,7 @@
 		<button
 			mat-button
 			(click)="onProductBuy($event)"
-			[disabled]="product === undefined ? true : false"
+			[disabled]="product === undefined"
 		>
 			Buy
 		</button>
