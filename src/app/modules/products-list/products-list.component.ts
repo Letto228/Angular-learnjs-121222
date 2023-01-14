@@ -2,6 +2,7 @@ import { ApplicationRef, ChangeDetectionStrategy, ChangeDetectorRef, Component, 
 import { IProduct } from '../../shared/products/product.interface';
 import { productsMock } from '../../shared/products/products.mock';
 import { LoadDirection } from '../../shared/scroll-with-loading/load-direction.const';
+import { PagenatorDirective } from '../../shared/pagenator/pagenator.directive';
 
 @Component({
 	selector: 'app-products-list',
@@ -17,29 +18,14 @@ export class ProductsListComponent implements OnInit, DoCheck {
 	constructor(private applicationRef: ApplicationRef, private changeDetectorRef: ChangeDetectorRef) {}
 
 	ngOnInit() {
-		this.changeDetectorRef.detach();
-		this.changeDetectorRef.detectChanges();
-
 		setTimeout(() => {
 			this.products = productsMock;
 			this.changeDetectorRef.detectChanges();
-			// this.changeDetectorRef.markForCheck();
 		}, 3000);
 
 		setTimeout(() => {
-			this.products = [...productsMock].map(item => ({ ...item, rating: 3 }));
-			// this.changeDetectorRef.detectChanges();
-			// this.changeDetectorRef.markForCheck();
-		}, 6000);
-
-		setTimeout(() => {
-			this.changeDetectorRef.reattach();
 			this.changeDetectorRef.markForCheck();
-		}, 7000);
-
-		// setInterval(() => {
-		// this.applicationRef.tick();
-		// }, 50)
+		}, 6000);
 	}
 
 	ngDoCheck(): void {
