@@ -20,7 +20,6 @@ export class PopupHostComponent {
 	}
 
 	closePopup() {
-		this.popupContainer?.clear();
 		this._popupTemplate = undefined;
 	}
 }
