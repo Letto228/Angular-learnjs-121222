@@ -11,13 +11,12 @@ export class ProductsListComponent implements OnInit {
 	products: IProduct[] | null = null;
 
 	ngOnInit() {
-		setTimeout(() => {
-			this.products = productsMock;
-		}, 3000);
+		this.products = productsMock;
 	}
-
+	onLoadBorderData(direction: string) {
+		console.log('onLoadBorderData', direction);
+	}
 	get productsList(): IProduct[] | null {
-		console.log('calc');
 		return this.products;
 	}
 }
