@@ -1,6 +1,6 @@
 <mat-card class="card">
 	<mat-card-header>
-		<h1 class="card-header" [innerHTML]="product.name"></h1>
+		<h1 class="card-header">{{ product.name }}</h1>
 	</mat-card-header>
 	<mat-card-content class="card-content">
 		<img
@@ -11,7 +11,7 @@
 		/>
 		<p class="card-price">Price: {{ product.price }}</p>
 		<div class="card-rating">
-			<p class="card-rating-element" [innerHTML]="product.rating"></p>
+			<p class="card-rating-element">{{ product.rating }}</p>
 			<mat-icon
 				class="card-rating-element"
 				aria-hidden="false"
