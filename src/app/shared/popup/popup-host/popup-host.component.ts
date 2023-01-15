@@ -6,11 +6,11 @@ import { Component, Input, TemplateRef, ViewChild, ViewContainerRef } from '@ang
 	styleUrls: ['./popup-host.component.less'],
 })
 export class PopupHostComponent {
-	@Input() set popupTemplate(template: TemplateRef<unknown>) {
-		this.template?.clear();
-		this.template?.createEmbeddedView(template);
+	@Input() set popupTemplate(viewContainer: TemplateRef<unknown | undefined>) {
+		this.viewContainer?.clear();
+		this.viewContainer?.createEmbeddedView(viewContainer);
 	}
 
 	@ViewChild('template', { read: ViewContainerRef, static: true })
-	private template!: ViewContainerRef;
+	private viewContainer!: ViewContainerRef;
 }
