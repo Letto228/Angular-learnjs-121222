@@ -1,36 +1,46 @@
-<!-- <ng-template
-	let-productsFromNgIf="ngIf"
-	[ngIf]="products"
-	[ngIfElse]="loader"
-> -->
-<!-- <div
-		*ngIf="products as productsFromNgIf; else loader; let productsFromNgIf = ngIf"
-		class="scroll-container"
-	> -->
 <div *ngIf="products as productsFromNgIf; else loader" class="scroll-container">
-	<!-- 
-		<ng-template [ngIf]="products" [ngIfElse]="loader" let-productsFromNgIf="ngIf">
-			<div class="scroll-container">
-	 -->
-
-	<!-- </ng-template> -->
-	<!-- <ng-template #content> -->
-	<!-- <ng-template [appDumpNgIf]="productsList" let-productsFromDumpNgIf="$implicit" let-containerLength="containerLength"> -->
-	<app-product-card
-		*ngFor="
-			let product of productsFromNgIf;
-			let index = index;
-			trackBy: trackById;
-			let first = first;
-			let last = last;
-			let even = even;
-			let odd = odd
+	<div
+		*appPagination="
+			let productsGroup of products;
+			let next = next;
+			let back = back;
+			let pages = pages;
+			let currentPage = page;
+			let selectPage = selectPage;
+			size: 6
 		"
-		class="product"
-		[product]="product"
-	></app-product-card>
+	>
+		<app-product-card
+			*ngFor="
+				let product of productsGroup;
+				let index = index;
+				trackBy: trackById;
+				let first = first;
+				let last = last;
+				let even = even;
+				let odd = odd
+			"
+			class="product"
+			[product]="product"
+		></app-product-card>
+		<div class="pagination">
+			<button mat-icon-button (click)="back()">
+				<mat-icon> chevron_left </mat-icon></button
+			><button
+				*ngFor="let page of pages"
+				mat-icon-button
+				class="pagination__page-number"
+				[class.pagination__page-number_active]="currentPage === page"
+				(click)="selectPage(page)"
+			>
+				{{ page + 1 }}
+			</button>
+			<button mat-icon-button (click)="next()">
+				<mat-icon> chevron_right </mat-icon>
+			</button>
+		</div>
+	</div>
 </div>
-<!-- </ng-template> -->
 
 <ng-template #loader>
 	<mat-spinner></mat-spinner>
