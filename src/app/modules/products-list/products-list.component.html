@@ -4,7 +4,8 @@
 >
 	<ng-container
 		*appPagination="
-			let productsGroup of products;
+			let productsGroup of products
+				| filterByParam : this.filterValue : 'rating';
 			elementsSize: 4;
 			let allIndexes = allIndexes;
 			let activeIndex = index;
@@ -13,19 +14,7 @@
 			let selectIndex = selectIndex
 		"
 	>
-		<!-- посложнее
-		<ng-container
-		*appPagination="
-			let productsGroup of (products | filterByParam : this.filterValue : 'rating');
-			elementsSize: 4;
-			let allIndexes = allIndexes;
-			let activeIndex = index;
-			let next = next;
-			let back = back;
-			let selectIndex = selectIndex
-		"
-	> -->
-		<!-- попроще 
+		<!-- попроще
 		<ng-container
 		*appPagination="
 			let productsGroup of (products | filterProductByName : this.filterName);
