@@ -101,4 +101,11 @@ export class CarouselDirective<T> implements OnChanges, OnInit, OnDestroy {
 
 		this.currentIndex$.next(newIndex);
 	}
+
+	static ngTemplateContextGuard<T>(
+		_directive: CarouselDirective<T>,
+		context: unknown,
+	): context is ICarouselContext<T> {
+		return true;
+	}
 }

@@ -103,4 +103,11 @@ export class PaginationDirective<T> implements OnInit, OnChanges, OnDestroy {
 	private selectIndex(index: number) {
 		this.currentIndex$.next(index);
 	}
+
+	static ngTemplateContextGuard<T>(
+		_directive: PaginationDirective<T>,
+		context: unknown,
+	): context is IPaginationContext<T> {
+		return true;
+	}
 }
