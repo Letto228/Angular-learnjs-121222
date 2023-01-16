@@ -14,7 +14,7 @@ export class ProductsListComponent implements OnInit {
 	// readonly productsStoreService = new ProductsStoreService();
 	readonly products$ = this.productsStoreService.products$;
 
-	filterValue: any;
+	filterValue: any = 4;
 	filterName = '';
 
 	constructor(
@@ -24,7 +24,7 @@ export class ProductsListComponent implements OnInit {
 		// @Inject('value') private value: IProduct,
 		// @Inject('second') private second: number,
 		// @Inject('multi') private multi: number[],
-		// private changeDetectorRef: ChangeDetectorRef,
+		private changeDetectorRef: ChangeDetectorRef,
 		private productsStoreService: ProductsStoreService,
 	) {
 		// console.log(this.productsStoreService === this.productsStoreServiceString);
@@ -36,10 +36,10 @@ export class ProductsListComponent implements OnInit {
 
 	ngOnInit() {
 		this.productsStoreService.loadProducts();
-		// setTimeout(() => {
-		// 	this.products = productsMock;
-		// 	this.changeDetectorRef.markForCheck();
-		// }, 3000);
+		setTimeout(() => {
+			this.filterValue = 2;
+			this.changeDetectorRef.markForCheck();
+		}, 3000);
 	}
 
 	trackById(_: number, item: IProduct) {
