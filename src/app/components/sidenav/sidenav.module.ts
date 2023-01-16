@@ -9,5 +9,11 @@ import { MatListModule } from '@angular/material/list';
 	declarations: [SidenavComponent],
 	imports: [CommonModule, MatSidenavModule, MatButtonModule, MatListModule],
 	exports: [SidenavComponent],
+	providers: [
+		{
+			provide: 'name',
+			useValue: 'SidenavModuleInjector',
+		},
+	],
 })
 export class SidenavModule {}

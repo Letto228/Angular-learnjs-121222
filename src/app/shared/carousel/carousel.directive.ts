@@ -104,8 +104,8 @@ export class CarouselDirective<T> implements OnChanges, OnInit, OnDestroy {
 
 	static ngTemplateContextGuard<T>(
 		_directive: CarouselDirective<T>,
-		context: unknown,
-	): context is ICarouselContext<T> {
+		_context: unknown,
+	): _context is ICarouselContext<T> {
 		return true;
 	}
 }

@@ -14,6 +14,30 @@ import { ProductsApiService } from './shared/products/products-api.service';
 import { BASE_URL } from './shared/base-url/base-url.token';
 import { baseUrl } from './shared/base-url/base-url.const';
 import { ProductModule } from './modules/product/product.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BaseUrlInterceptor } from './shared/base-url/base-url.interceptor';
+
+// NullInjector - конец
+
+// |
+
+// PlatformInjector
+
+// |
+
+// RootInjector(1)/AppModuleInjector(1)
+
+// |												|
+
+// |												HeaderModuleInjector(lazy)
+
+// |												|
+
+// ElementInjector(AppComponentElementInjector)
+
+// |												|
+
+// SidenavElementInjector							HeaderElementInjector
 
 @NgModule({
 	declarations: [AppComponent],
@@ -27,15 +51,40 @@ import { ProductModule } from './modules/product/product.module';
 		MatListModule,
 		PopupHostModule,
 		ProductModule,
+		HttpClientModule,
 	],
 	providers: [
-		ProductsStoreService,
-		ProductsApiService,
+		// ProductsStoreService,
+		// ProductsApiService,
+		// {
+		// 	provide: ProductsStoreService,
+		// 	useValue: {},
+		// },
 		{
-			provide: BASE_URL,
-			useValue: baseUrl,
+			provide: 'name',
+			useValue: 'AppModuleInjector',
 		},
+		// {
+		// 	provide: BASE_URL,
+		// 	useValue: baseUrl,
+		// },
+		{
+			provide: HTTP_INTERCEPTORS,
+			multi: true,
+			useClass: BaseUrlInterceptor,
+		},
+		// {
+		// 	provide: HTTP_INTERCEPTORS,
+		// 	multi: true,
+		// 	useClass: AuthInterceptor,
+		// },
+		// {
+		// 	provide: HTTP_INTERCEPTORS,
+		// 	multi: true,
+		// 	useClass: ErrorInterceptor,
+		// },
 	],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}
+// request => BaseUrlInterceptor(request) => ErrorInterceptor(BaseUrlInterceptor(request)) => AuthInterceptor(ErrorInterceptor(BaseUrlInterceptor(request)))

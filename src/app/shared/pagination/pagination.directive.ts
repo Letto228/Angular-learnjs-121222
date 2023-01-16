@@ -25,7 +25,7 @@ interface IPaginationContext<T> {
 	selector: '[appPagination]',
 })
 export class PaginationDirective<T> implements OnInit, OnChanges, OnDestroy {
-	@Input() appPaginationElementsSize = 1;
+	@Input() appPaginationElementsSize: string | number = 1;
 	@Input() appPaginationOf: T[] | undefined | null;
 
 	private groupedItems: Array<T[]> = [];
@@ -43,7 +43,7 @@ export class PaginationDirective<T> implements OnInit, OnChanges, OnDestroy {
 				return;
 			}
 
-			this.groupedItems = getGroupedItems(this.appPaginationOf, this.appPaginationElementsSize);
+			this.groupedItems = getGroupedItems(this.appPaginationOf, this.appPaginationElementsSize as number);
 			this.currentIndex$.next(0);
 		}
 	}
@@ -106,8 +106,15 @@ export class PaginationDirective<T> implements OnInit, OnChanges, OnDestroy {
 
 	static ngTemplateContextGuard<T>(
 		_directive: PaginationDirective<T>,
-		context: unknown,
-	): context is IPaginationContext<T> {
+		_context: unknown,
+	): _context is IPaginationContext<T> {
+		return true;
+	}
+
+	static ngTemplateGuard_appPaginationOf<T>(
+		_directive: PaginationDirective<T>,
+		prop: T[] | undefined | null,
+	): prop is T[] {
 		return true;
 	}
 }

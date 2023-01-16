@@ -6,6 +6,12 @@ import { applicationConfigMock } from './shared/application-config/application-c
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.less'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	providers: [
+		{
+			provide: 'name',
+			useValue: 'AppComponentElementInjector',
+		},
+	],
 })
 export class AppComponent {
 	readonly applicationConfig = applicationConfigMock;
