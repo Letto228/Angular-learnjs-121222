@@ -1,10 +1,9 @@
 <mat-card class="card">
 	<mat-card-header>
 		<mat-card-title>{{ product.name }}</mat-card-title>
-		<mat-card-subtitle>{{
-			product.price | currency : 'USD' : 'symbol-narrow' : '1.0-0'
-		}}</mat-card-subtitle>
-		<!-- {{ CurrencyPipe.transform(product.price, 'USD', 'symbol-narrow', '1.0-0') }} -->
+		<mat-card-subtitle>
+			{{ product.price | currency : 'USD' : 'symbol-narrow' : '1.0-0' }}
+		</mat-card-subtitle>
 	</mat-card-header>
 	<div
 		*appCarousel="

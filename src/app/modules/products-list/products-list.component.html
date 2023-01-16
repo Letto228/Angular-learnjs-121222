@@ -2,21 +2,9 @@
 	*ngIf="products$ | async as products; else loader"
 	class="scroll-container"
 >
-	<!-- <ng-container
-		*appPagination="
-			let productsGroup of products;
-			elementsSize: 4;
-			let allIndexes = allIndexes;
-			let activeIndex = index;
-			let next = next;
-			let back = back;
-			let selectIndex = selectIndex
-		"
-	> -->
 	<ng-container
 		*appPagination="
-			let productsGroup of products
-				| filterByParam : this.filterValue : 'feedbacksCount';
+			let productsGroup of products | filterByParam : '' : 'name';
 			elementsSize: 4;
 			let allIndexes = allIndexes;
 			let activeIndex = index;
@@ -25,37 +13,16 @@
 			let selectIndex = selectIndex
 		"
 	>
-		<!-- попроще 
-		<ng-container
-		*appPagination="
-			let productsGroup of (products | filterProductByName : this.filterName);
-			elementsSize: 4;
-			let allIndexes = allIndexes;
-			let activeIndex = index;
-			let next = next;
-			let back = back;
-			let selectIndex = selectIndex
-		"
-	> -->
 		<div class="card-container">
 			<app-product-card
 				*ngFor="
 					let product of productsGroup;
 					let index = index;
-					trackBy: trackById;
-					let first = first;
-					let last = last;
-					let even = even;
-					let odd = odd
+					trackBy: trackById
 				"
 				class="product"
 				[product]="product"
 			></app-product-card>
-			<!-- <p *ngFor="let product of productsGroup"> -->
-			<!-- {{getJson(product)}} -->
-			<!-- {{product | json}} -->
-			<!-- {{ToJsonPipe.transform(product)}} -->
-			<!-- </p> -->
 		</div>
 
 		<div class="pagination-container">

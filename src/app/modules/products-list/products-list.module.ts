@@ -18,7 +18,6 @@ import { FilterByParamModule } from '../../shared/filter-by-param/filter-by-para
 		MatIconModule,
 		MatButtonModule,
 		PaginationModule,
-		ToJsonModule,
 		FilterByParamModule,
 	],
 	exports: [ProductsListComponent],
