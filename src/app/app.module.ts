@@ -13,6 +13,7 @@ import { ProductsStoreService } from './shared/products/products-store.service';
 import { ProductsApiService } from './shared/products/products-api.service';
 import { BASE_URL } from './shared/base-url/base-url.token';
 import { baseUrl } from './shared/base-url/base-url.const';
+import { ProductModule } from './modules/product/product.module';
 
 @NgModule({
 	declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { baseUrl } from './shared/base-url/base-url.const';
 		SidenavModule,
 		MatListModule,
 		PopupHostModule,
+		ProductModule,
 	],
 	providers: [
 		ProductsStoreService,
