@@ -14,8 +14,8 @@ export class ProductsListComponent implements OnInit {
 	// readonly productsStoreService = new ProductsStoreService();
 	readonly products$ = this.productsStoreService.products$;
 
-	filterValue: any;
-	filterName = '';
+	filterValue: any = 4.5;
+	filterName: keyof IProduct = 'rating';
 
 	constructor(
 		// @Inject(ChangeDetectorRef) private changeDetectorRef: ChangeDetectorRef,

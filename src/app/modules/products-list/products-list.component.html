@@ -5,7 +5,7 @@
 	<ng-container
 		*appPagination="
 			let productsGroup of products
-				| filterByParam : this.filterValue : 'rating';
+				| filterByParam : this.filterValue : this.filterName;
 			elementsSize: 4;
 			let allIndexes = allIndexes;
 			let activeIndex = index;
