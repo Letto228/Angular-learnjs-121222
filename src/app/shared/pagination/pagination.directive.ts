@@ -8,7 +8,7 @@ import {
 	TemplateRef,
 	ViewContainerRef,
 } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { IPaginationContext } from './ipagination-context';
 
 @Directive({
@@ -48,7 +48,7 @@ export class PaginationDirective<T> implements OnDestroy, OnChanges, OnInit {
 	}
 
 	public ngOnInit() {
-		this.currentPageIndex$.subscribe((pageIndex: number) => {
+		this.currentPageIndex$.pipe(takeUntil(this.destroy$)).subscribe((pageIndex: number) => {
 			this.viewContainerRef.clear();
 			this.viewContainerRef.createEmbeddedView(this.templateRef, this.getCurrentContext(pageIndex));
 		});
