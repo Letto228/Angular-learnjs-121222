@@ -7,9 +7,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { PaginationModule } from '../../shared/pagination/pagination.module';
 import { ToJsonModule } from '../../shared/to-json/to-json.module';
+import { FilterByParamPipe } from './filter-by-param.pipe';
 
 @NgModule({
-	declarations: [ProductsListComponent],
+	declarations: [ProductsListComponent, FilterByParamPipe],
 	imports: [
 		CommonModule,
 		ProductCardModule,
