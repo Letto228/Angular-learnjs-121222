@@ -8,30 +8,21 @@ export class InfinityScrollDirective {
 	@Output() loadDirection = new EventEmitter<loadDirection>();
 
 	private offset = 100;
-	private previousDirection?: loadDirection;
-	private previousScrollHeight?: number;
+	private previousScrollTop = -1;
 
 	@HostListener('scroll', ['$event.target'])
 	onScroll({ scrollTop, scrollHeight, clientHeight }: HTMLElement) {
-		const isBorderFarAway = scrollTop <= this.offset;
-		const isUploadItems = scrollHeight - (clientHeight + scrollTop) <= this.offset;
-		const directionUpdate = scrollHeight !== this.previousScrollHeight;
-		const updateOnScrollDown =
-			this.previousDirection === loadDirection.up || !this.previousDirection || directionUpdate;
+		const direction = this.previousScrollTop > scrollTop ? loadDirection.up : loadDirection.down;
+		const isCrossTopOffset = scrollTop <= this.offset;
+		const isCrossDownOffset = scrollHeight - (clientHeight + scrollTop) <= this.offset;
 
-		if (isBorderFarAway) {
-			this.loadDirection.emit(loadDirection.up);
-			this.previousDirection = loadDirection.up;
-			this.previousScrollHeight = scrollHeight;
-			console.log('load top < 100');
-			return;
-		}
+		this.previousScrollTop = scrollTop;
 
-		if (isUploadItems && updateOnScrollDown) {
-			this.loadDirection.emit(loadDirection.down);
-			this.previousDirection = loadDirection.down;
-			this.previousScrollHeight = scrollHeight;
-			console.log('load bottom < 100');
+		const needLoadUp = direction === loadDirection.up && isCrossTopOffset;
+		const needLoadDown = direction === loadDirection.down && isCrossDownOffset;
+
+		if (needLoadUp || needLoadDown) {
+			this.loadDirection.emit(direction);
 			return;
 		}
 	}
