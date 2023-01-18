@@ -68,7 +68,7 @@ export class PaginationDirective<T> implements OnChanges, OnInit, OnDestroy {
 	private listenCurrentIndexChange() {
 		this.currentIndex$
 			.pipe(
-				map(index => this.getCurrentIndex(index, this.groupedItems)),
+				map(index => this.getCurrentContext(index, this.groupedItems)),
 				takeUntil(this.destroy$),
 			)
 			.subscribe(context => {
@@ -77,7 +77,7 @@ export class PaginationDirective<T> implements OnChanges, OnInit, OnDestroy {
 			});
 	}
 
-	private getCurrentIndex(activeIndex: number, items: Array<T[]>): IPaginationContext<T> {
+	private getCurrentContext(activeIndex: number, items: Array<T[]>): IPaginationContext<T> {
 		return {
 			$implicit: items[activeIndex],
 			index: activeIndex,
