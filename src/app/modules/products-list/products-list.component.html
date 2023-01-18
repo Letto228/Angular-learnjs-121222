@@ -21,10 +21,10 @@
 			let page of products;
 			let prev = prev;
 			let next = next;
-			let pages = allPages;
+			let allPages = allPages;
 			let currentPage = currentPage;
 			let selectPage = selectPage;
-			perPage: 3
+			perPage: 4
 		"
 	>
 		<app-product-card
@@ -40,6 +40,7 @@
 			class="product"
 			[product]="product"
 		></app-product-card>
+		<span>{{ allPages }}</span>
 		<div class="pagination">
 			<button
 				mat-icon-button
@@ -48,7 +49,7 @@
 			>
 				<mat-icon> chevron_left </mat-icon></button
 			><button
-				*ngFor="let page of pages"
+				*ngFor="let page of allPages"
 				mat-icon-button
 				(click)="selectPage(page)"
 			>
@@ -57,7 +58,7 @@
 			<button
 				mat-icon-button
 				(click)="next()"
-				[disabled]="currentPage === pages.length - 1"
+				[disabled]="currentPage === allPages.length - 1"
 			>
 				<mat-icon> chevron_right </mat-icon>
 			</button>

@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 import { IPaginationContext } from './ipagination-context';
+import { splitByPages } from './split-by-pages';
 
 @Directive({
 	selector: '[appPagination]',
@@ -29,36 +30,26 @@ export class PaginationDirective<T> implements OnDestroy, OnChanges, OnInit {
 	}
 
 	public ngOnChanges({ appPaginationPerPage, appPaginationOf }: SimpleChanges): void {
-		if (!appPaginationOf) {
-			this.viewContainerRef.clear();
-			return;
-		}
-
 		if (appPaginationOf || appPaginationPerPage) {
-			const pagesTotal = Math.ceil(this.appPaginationOf?.length || 0 / this.appPaginationPerPage);
-			this.pages = Array(pagesTotal)
-				.fill(undefined)
-				.map((_, index) => {
-					const start = index * this.appPaginationPerPage;
-					return this.appPaginationOf?.slice(start, start + this.appPaginationPerPage) || [];
-				});
+			if (!this.appPaginationOf?.length) {
+				this.viewContainerRef.clear();
+				return;
+			}
 
+			this.pages = splitByPages(this.appPaginationOf, this.appPaginationPerPage);
 			this.currentPageIndex$.next(0);
 		}
 	}
 
 	public ngOnInit() {
-		this.currentPageIndex$.pipe(takeUntil(this.destroy$)).subscribe((pageIndex: number) => {
-			this.viewContainerRef.clear();
-			this.viewContainerRef.createEmbeddedView(this.templateRef, this.getCurrentContext(pageIndex));
-		});
+		this.pageChangeSubscription();
 	}
 
 	public getCurrentContext(index: number): IPaginationContext<T> {
 		return {
 			$implicit: this.pages[index],
 			currentPage: index,
-			allPages: this.pages[index].map((_, index) => index),
+			allPages: this.pages.map((_, index) => index),
 			prev: () => {
 				this.prev();
 			},
@@ -98,5 +89,12 @@ export class PaginationDirective<T> implements OnDestroy, OnChanges, OnInit {
 
 	private selectPage(index: number): void {
 		this.currentPageIndex$.next(index);
+	}
+
+	private pageChangeSubscription() {
+		return this.currentPageIndex$.pipe(takeUntil(this.destroy$)).subscribe((pageIndex: number) => {
+			this.viewContainerRef.clear();
+			this.viewContainerRef.createEmbeddedView(this.templateRef, this.getCurrentContext(pageIndex));
+		});
 	}
 }
