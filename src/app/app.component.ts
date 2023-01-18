@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { applicationConfigMock } from './shared/application-config/application-config.mock';
 
 @Component({
