@@ -10,14 +10,13 @@ import { productsMock } from './products.mock';
 	providedIn: 'root',
 })
 export class ProductsApiService {
-	constructor(
-		// @Inject(BASE_URL) private baseUrl: string,
-		private readonly http: HttpClient,
-	) {}
+	constructor(private readonly http: HttpClient) {}
 
 	getProducts$(): Observable<IProduct[]> {
-		// console.log(this.baseUrl);
-		// return of({ data: { items: productsMock } }).pipe(map(({ data }) => data.items));
 		return this.http.get<IProductsDto>(`/products/suggestion`).pipe(map(({ data }) => data.items));
+	}
+
+	getProduct$(id: string): Observable<IProduct | undefined> {
+		return this.http.get<{ data: IProduct }>(`/products/${id}`).pipe(map(({ data }) => data));
 	}
 }

@@ -9,6 +9,7 @@ import { ProductsApiService } from './products-api.service';
 })
 export class ProductsStoreService {
 	private readonly productsStore$ = new BehaviorSubject<IProduct[] | null>(null);
+	private readonly productStore$ = new BehaviorSubject<IProduct | null>(null);
 
 	constructor(private productsApiService: ProductsApiService) {}
 
@@ -16,9 +17,19 @@ export class ProductsStoreService {
 		return this.productsStore$.asObservable();
 	}
 
+	get product$(): Observable<IProduct | null> {
+		return this.productStore$.asObservable();
+	}
+
 	loadProducts() {
 		this.productsApiService.getProducts$().subscribe(products => {
 			this.productsStore$.next(products);
+		});
+	}
+
+	loadProduct(id: string) {
+		this.productsApiService.getProduct$(id).subscribe(product => {
+			this.productStore$.next(product || null);
 		});
 	}
 }
