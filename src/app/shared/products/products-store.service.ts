@@ -28,6 +28,8 @@ export class ProductsStoreService {
 	}
 
 	loadProduct(id: string) {
+		this.productStore$.next(null);
+
 		this.productsApiService.getProduct$(id).subscribe(product => {
 			this.productStore$.next(product || null);
 		});

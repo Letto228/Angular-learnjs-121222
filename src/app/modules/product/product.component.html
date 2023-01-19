@@ -20,12 +20,35 @@
 	</div>
 	<div>
 		<h1>{{ product.name }}</h1>
-		<nav mat-tab-nav-bar>
-			<a mat-tab-link> description </a>
-			<a mat-tab-link> type </a>
+		<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+			<!-- <a
+				mat-tab-link
+				(click)="navigateToTab('description')"
+			>
+				description
+			</a>
+			<a
+				mat-tab-link
+				(click)="navigateToTab('type')"
+			> 
+				type
+			</a> -->
+			<a
+				mat-tab-link
+				[routerLink]="undefined"
+				[queryParams]="{ input: 'search' }"
+			>
+				<!-- segment by ProductComponent + /description -->
+				description
+			</a>
+			<a mat-tab-link routerLink="type">
+				<!-- segment by ProductComponent + /type -->
+				type
+			</a>
 		</nav>
+		<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
 
-		<!-- navigation -->
+		<router-outlet></router-outlet>
 	</div>
 </ng-container>
 
