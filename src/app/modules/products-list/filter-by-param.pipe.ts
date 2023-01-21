@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 	name: 'filterByParam',
 })
 export class FilterByParamPipe<T> implements PipeTransform {
-	transform(value: T[], filterValue: string, fieldName: keyof T): T[] {
+	transform(value: T[], filterValue: T[keyof T], fieldName: keyof T): T[] {
 		if (!value) {
 			return [];
 		}
@@ -15,8 +15,12 @@ export class FilterByParamPipe<T> implements PipeTransform {
 
 		const filtered = value.filter(item => {
 			if (Object.prototype.hasOwnProperty.call(item, fieldName)) {
-				const keyValue = String(item[fieldName]).toLowerCase();
-				return keyValue === filterValue || keyValue.indexOf(filterValue) >= 0;
+				if (typeof filterValue === 'string') {
+					const keyValue = String(item[fieldName]).toLowerCase();
+					return keyValue.includes(filterValue);
+				} else {
+					return item[fieldName] === filterValue;
+				}
 			}
 
 			return false;
