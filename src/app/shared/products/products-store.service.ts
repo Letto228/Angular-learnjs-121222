@@ -21,8 +21,8 @@ export class ProductsStoreService {
 		return this.productStore$.asObservable();
 	}
 
-	loadProducts() {
-		this.productsApiService.getProducts$().subscribe(products => {
+	loadProducts(subCategoryId?: string | null) {
+		this.productsApiService.getProducts$(subCategoryId).subscribe(products => {
 			this.productsStore$.next(products);
 		});
 	}

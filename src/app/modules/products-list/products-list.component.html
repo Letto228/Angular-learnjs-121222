@@ -40,15 +40,19 @@
 			<button mat-icon-button (click)="back()">
 				<mat-icon> chevron_left </mat-icon>
 			</button>
-			<button
-				*ngFor="let index of allIndexes"
-				mat-icon-button
-				class="pagination__page-number"
-				[class.pagination__page-number_active]="activeIndex === index"
-				(click)="selectIndex(index)"
-			>
-				{{ index + 1 }}
-			</button>
+			<div class="pagination__page-number-container">
+				<button
+					*ngFor="let index of allIndexes"
+					mat-icon-button
+					class="pagination__page-number"
+					[class.pagination__page-number_active]="
+						activeIndex === index
+					"
+					(click)="selectIndex(index)"
+				>
+					{{ index + 1 }}
+				</button>
+			</div>
 			<button mat-icon-button (click)="next()">
 				<mat-icon> chevron_right </mat-icon>
 			</button>
