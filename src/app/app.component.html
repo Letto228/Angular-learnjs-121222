@@ -27,7 +27,12 @@
 </app-sidenav>
 <!-- <app-products-list></app-products-list> -->
 
-<!-- For Homework -->
-<!-- <app-popup-host [popupTemplate]="template"></app-popup-host>
+<app-popup-host [popupTemplate]="firstTemplate"></app-popup-host>
+<app-popup-host [popupTemplate]="secondTemplate"></app-popup-host>
 
-<ng-template #template></ng-template> -->
+<ng-template #firstTemplate>
+	<p>Popup works!</p>
+</ng-template>
+<ng-template #secondTemplate>
+	<p>This is a second popup template and it also works!</p>
+</ng-template>
