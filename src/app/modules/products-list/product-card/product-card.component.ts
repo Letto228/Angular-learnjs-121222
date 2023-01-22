@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IProduct } from 'src/app/shared/products/product.interface';
 import { productMock } from 'src/app/shared/products/product.mock';
 
 @Component({
@@ -7,11 +8,10 @@ import { productMock } from 'src/app/shared/products/product.mock';
 	styleUrls: ['./product-card.component.less'],
 })
 export class ProductCardComponent {
-	@Input() cardInfo: any;
+	@Input() cardInfo: IProduct | undefined;
 
 	get product() {
-		if (this.cardInfo) return this.cardInfo;
-		return productMock;
+		return this.cardInfo ? this.cardInfo : productMock;
 	}
 
 	@Output() isProductBoughtChange = new EventEmitter<string>();
