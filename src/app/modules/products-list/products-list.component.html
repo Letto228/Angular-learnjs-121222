@@ -2,6 +2,11 @@
 	*ngIf="products$ | async as products; else loader"
 	class="scroll-container"
 >
+	<mat-form-field appearance="fill">
+		<mat-label>Search</mat-label>
+		<input matInput />
+	</mat-form-field>
+
 	<ng-container
 		*appPagination="
 			let productsGroup of products | filterByParam : '' : 'name';

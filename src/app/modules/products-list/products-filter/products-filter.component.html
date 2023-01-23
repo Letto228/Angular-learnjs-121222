@@ -1,0 +1,22 @@
+<form class="filter">
+	<mat-form-field appearance="fill">
+		<mat-label>Search</mat-label>
+		<input matInput />
+	</mat-form-field>
+
+	<div class="checkbox-container">
+		<mat-checkbox *ngFor="let brand of brands">
+			{{ brand }}
+		</mat-checkbox>
+	</div>
+	<div class="price-range">
+		<div>
+			Min
+			<app-counter-input></app-counter-input>
+		</div>
+		<div>
+			Max
+			<app-counter-input></app-counter-input>
+		</div>
+	</div>
+</form>

@@ -9,6 +9,7 @@ import { PaginationModule } from '../../shared/pagination/pagination.module';
 import { FilterByParamModule } from '../../shared/filter-by-param/filter-by-param.module';
 import { RouterModule } from '@angular/router';
 import { ProductsListRoutingModule } from './products-list-routing.module';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
 	declarations: [ProductsListComponent],
@@ -22,6 +23,7 @@ import { ProductsListRoutingModule } from './products-list-routing.module';
 		FilterByParamModule,
 		RouterModule,
 		ProductsListRoutingModule,
+		MatInputModule,
 	],
 	exports: [ProductsListComponent],
 })
