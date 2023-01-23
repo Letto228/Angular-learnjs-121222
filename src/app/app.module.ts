@@ -5,36 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './components/header/header.module';
-// import { ProductsListModule } from './modules/products-list/products-list.module';
 import { SidenavModule } from './components/sidenav/sidenav.module';
 import { MatListModule } from '@angular/material/list';
 import { PopupHostModule } from './shared/popup/popup-host/popup-host.module';
-// import { ProductModule } from './modules/product/product.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseUrlInterceptor } from './shared/base-url/base-url.interceptor';
 import { NotFoundModule } from './modules/not-found/not-found.module';
-
-// NullInjector - конец
-
-// |
-
-// PlatformInjector
-
-// |
-
-// RootInjector(1)/AppModuleInjector(1)
-
-// |												|
-
-// |												HeaderModuleInjector(lazy)
-
-// |												|
-
-// ElementInjector(AppComponentElementInjector)
-
-// |												|
-
-// SidenavElementInjector							HeaderElementInjector
 
 @NgModule({
 	declarations: [AppComponent],
@@ -43,8 +19,6 @@ import { NotFoundModule } from './modules/not-found/not-found.module';
 		AppRoutingModule,
 		BrowserAnimationsModule,
 		HeaderModule,
-		// ProductsListModule,
-		// ProductModule,
 		SidenavModule,
 		MatListModule,
 		PopupHostModule,

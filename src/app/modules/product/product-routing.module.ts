@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CanActivateChildGuard } from '../../shared/test-guards/can-activate-child.guard';
 import { DescriptionComponent } from './description/description.component';
 import { DetailsComponent } from './description/details/details.component';
 import { ProductComponent } from './product.component';
@@ -10,7 +9,6 @@ const routes: Routes = [
 	{
 		path: ':id',
 		component: ProductComponent,
-		// canActivateChild: [CanActivateChildGuard],
 		children: [
 			{
 				path: 'type',
