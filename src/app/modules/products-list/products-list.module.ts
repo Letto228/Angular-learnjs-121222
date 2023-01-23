@@ -10,6 +10,9 @@ import { FilterByParamModule } from '../../shared/filter-by-param/filter-by-para
 import { RouterModule } from '@angular/router';
 import { ProductsListRoutingModule } from './products-list-routing.module';
 import { MatInputModule } from '@angular/material/input';
+import { CounterInputModule } from '../../shared/counter-input/counter-input.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ValidatorsModule } from '../../shared/validators/validators.module';
 
 @NgModule({
 	declarations: [ProductsListComponent],
@@ -24,7 +27,17 @@ import { MatInputModule } from '@angular/material/input';
 		RouterModule,
 		ProductsListRoutingModule,
 		MatInputModule,
+		CounterInputModule,
+		ReactiveFormsModule,
+		FormsModule,
+		ValidatorsModule,
 	],
 	exports: [ProductsListComponent],
+	// providers: [
+	// 	{
+	// 		provide: 'name',
+	// 		useValue: 'ProductsListModule',
+	// 	}
+	// ]
 })
 export class ProductsListModule {}

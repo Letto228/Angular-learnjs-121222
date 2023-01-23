@@ -12,13 +12,15 @@ export class BaseUrlInterceptor implements HttpInterceptor {
 			url: this.baseUrl + request.url,
 		});
 
-		return next.handle(newRequest).pipe(
-			tap(event => {
-				if (event instanceof HttpResponse) {
-					console.log(event);
-				}
-			}),
-		);
+		return next
+			.handle(newRequest)
+			.pipe
+			// tap(event => {
+			// 	if (event instanceof HttpResponse) {
+			// 		console.log(event);
+			// 	}
+			// }),
+			();
 	}
 	// intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 	//   return next.handle(request).pipe(

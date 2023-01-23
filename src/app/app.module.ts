@@ -31,6 +31,10 @@ import { NotFoundModule } from './modules/not-found/not-found.module';
 			multi: true,
 			useClass: BaseUrlInterceptor,
 		},
+		// {
+		// 	provide: 'name',
+		// 	useValue: 'AppModule',
+		// }
 	],
 	bootstrap: [AppComponent],
 })

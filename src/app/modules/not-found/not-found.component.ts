@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 
 @Component({
 	selector: 'app-not-found',
@@ -6,4 +6,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 	styleUrls: ['./not-found.component.less'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NotFoundComponent {}
+export class NotFoundComponent {
+	// constructor(
+	// 	@Inject('name') private readonly name: string,
+	// ) {
+	// 	console.log('NotFoundComponent - ', this.name);
+	// }
+}
