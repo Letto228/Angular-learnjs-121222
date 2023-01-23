@@ -2,7 +2,7 @@
 	*ngIf="products$ | async as products; else loader"
 	class="scroll-container"
 >
-	<ng-container
+	<!-- <ng-container
 		*appPagination="
 			let productsGroup of products;
 			elementsSize: 4;
@@ -12,31 +12,30 @@
 			let back = back;
 			let selectIndex = selectIndex
 		"
+	> -->
+	<ng-container
+		*appPagination="
+			let productsGroup of products
+				| toFilterElements : this.filterValue : 'feedbacksCount';
+			elementsSize: 4;
+			let allIndexes = allIndexes;
+			let activeIndex = index;
+			let next = next;
+			let back = back;
+			let selectIndex = selectIndex
+		"
 	>
-		<!-- посложнее
-		<ng-container
+		<!-- <ng-container
 		*appPagination="
-			let productsGroup of (products | filterByParam : this.filterValue : 'rating');
+			let productsGroup of (products | toFilterElements : this.filterName);
 			elementsSize: 4;
 			let allIndexes = allIndexes;
 			let activeIndex = index;
 			let next = next;
 			let back = back;
 			let selectIndex = selectIndex
-		"
-	> -->
-		<!-- попроще 
-		<ng-container
-		*appPagination="
-			let productsGroup of (products | filterProductByName : this.filterName);
-			elementsSize: 4;
-			let allIndexes = allIndexes;
-			let activeIndex = index;
-			let next = next;
-			let back = back;
-			let selectIndex = selectIndex
-		"
-	> -->
+		" -->
+		>
 		<div class="card-container">
 			<app-product-card
 				*ngFor="
