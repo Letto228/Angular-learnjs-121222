@@ -14,7 +14,6 @@ export class ProductsListComponent implements OnInit {
 	// readonly products$ = this.productsStoreService.products$;
 	readonly products$ = this.activatedRoute.paramMap.pipe(
 		map(paramMap => paramMap.get('subcategoryId')),
-		filter(Boolean),
 		tap(id => {
 			this.productsStoreService.loadProducts(id);
 		}),
