@@ -1,4 +1,4 @@
-import { Component, Input, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, HostBinding, Input, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
 	selector: 'app-popup-host',
@@ -9,9 +9,16 @@ export class PopupHostComponent {
 	@Input() set popupTemplate(template: TemplateRef<unknown>) {
 		this.popupContainer?.clear();
 
-		if (template && this.popupContainer) {
-			this.popupContainer.createEmbeddedView(template);
+		if (template) {
+			this.popupContainer?.createEmbeddedView(template);
 		}
+	}
+
+	@HostBinding('style.display') get hostDisplay() {
+		if (this.popupContainer?.length !== 0) {
+			return 'block';
+		}
+		return 'none';
 	}
 
 	@ViewChild('popupContainer', { read: ViewContainerRef, static: true })
