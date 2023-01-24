@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, tap } from 'rxjs';
+import { map, tap, switchMap } from 'rxjs';
 import { IProduct } from '../../shared/products/product.interface';
 import { ProductsStoreService } from '../../shared/products/products-store.service';
 
@@ -10,22 +10,26 @@ import { ProductsStoreService } from '../../shared/products/products-store.servi
 	styleUrls: ['./products-list.component.less'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsListComponent implements OnInit {
-	readonly products$ = this.productsStoreService.products$;
+export class ProductsListComponent {
+	// readonly products$ = this.productsStoreService.products$;
 	// readonly products$ = this.activatedRoute.data.pipe(
 	// 	tap(console.log),
 	// 	map<{products: IProduct[]}, IProduct[]>(data => data.products),
 	// );
 
+	readonly products$ = this.activatedRoute.paramMap.pipe(
+		map(params => params.get('category')),
+		tap(category => {
+			this.productsStoreService.loadProducts(category);
+		}),
+		switchMap(() => this.productsStoreService.products$),
+	);
+
 	constructor(
 		private readonly productsStoreService: ProductsStoreService,
 		private readonly router: Router,
-	) // private readonly activatedRoute: ActivatedRoute,
-	{}
-
-	ngOnInit() {
-		this.productsStoreService.loadProducts();
-	}
+		private readonly activatedRoute: ActivatedRoute, // private readonly activatedRoute: ActivatedRoute,
+	) {}
 
 	trackById(_: number, item: IProduct) {
 		return item._id;
