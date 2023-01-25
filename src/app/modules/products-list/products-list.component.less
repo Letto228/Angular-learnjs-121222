@@ -16,6 +16,22 @@
 	overflow: auto;
 }
 
+.pagination-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pagination {
+	&__page-number {
+		cursor: pointer;
+
+		&_active {
+			color: rgb(0, 13, 255);
+		}
+	}
+}
+
 mat-spinner {
 	margin: auto;
 }
