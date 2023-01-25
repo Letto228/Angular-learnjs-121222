@@ -21,6 +21,7 @@ export class PaginationDirective<T> implements OnChanges, OnInit {
 	private readonly currentPage$ = new BehaviorSubject<number>(1);
 	private currentPageItems: T[] = [];
 	private pages = 0;
+	private pagesData: Map<number, T[]> = new Map<number, T[]>();
 
 	constructor(private viewContainerRef: ViewContainerRef, private templateRef: TemplateRef<IPaginationContext<T>>) {}
 
@@ -78,6 +79,7 @@ export class PaginationDirective<T> implements OnChanges, OnInit {
 	}
 	private getCurrentPageItems<T>(items: T[], pageSize: number, pageNumber: number) {
 		const currentPageItems = items?.slice(pageNumber * pageSize, (pageNumber + 1) * pageSize);
+		this.pagesData.set(pageNumber, currentPageItems);
 		return currentPageItems;
 	}
 
