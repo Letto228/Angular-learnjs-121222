@@ -5,6 +5,10 @@ import { ProductsListComponent } from './products-list.component';
 
 const routes: Routes = [
 	{
+		path: ':category',
+		component: ProductsListComponent,
+	},
+	{
 		path: '',
 		component: ProductsListComponent,
 	},
