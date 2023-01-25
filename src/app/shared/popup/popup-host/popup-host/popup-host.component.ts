@@ -1,4 +1,4 @@
-import { Component, Input, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, HostBinding, Input, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
 	selector: 'app-popup-host',
@@ -14,4 +14,8 @@ export class PopupHostComponent {
 	}
 	@ViewChild('viewContainer', { read: ViewContainerRef, static: true })
 	private viewContainer!: ViewContainerRef;
+
+	@HostBinding('style.display') get display(): string {
+		return this.viewContainer.length ? 'block' : 'none';
+	}
 }
