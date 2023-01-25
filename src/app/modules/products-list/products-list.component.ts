@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../../shared/products/product.interface';
 import { productsMock } from '../../shared/products/products.mock';
+import { ScrollDirection } from 'src/app/shared/insert-scroll/scroll.consts';
 
 @Component({
 	selector: 'app-products-list',
@@ -13,7 +14,7 @@ export class ProductsListComponent implements OnInit {
 	ngOnInit() {
 		this.products = productsMock;
 	}
-	onLoadBorderData(direction: string) {
+	onLoadBorderData(direction: ScrollDirection) {
 		console.log('onLoadBorderData', direction);
 	}
 	get productsList(): IProduct[] | null {

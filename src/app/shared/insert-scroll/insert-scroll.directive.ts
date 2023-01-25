@@ -1,14 +1,15 @@
 import { Directive, HostListener, EventEmitter, Output } from '@angular/core';
+import { ScrollDirection } from './scroll.consts';
 
 @Directive({
 	selector: '[appInsertScroll]',
 })
 export class InsertScrollDirective {
 	@Output()
-	appInsertScroll = new EventEmitter<string>();
+	appInsertScroll = new EventEmitter<ScrollDirection>();
 
-	lastPoint = 0;
-	readonly offset = 100;
+	private lastPoint = 0;
+	private readonly offset = 100;
 
 	@HostListener('scroll', ['$event'])
 	private onScroll($event: Event): void {
@@ -16,27 +17,21 @@ export class InsertScrollDirective {
 		const lastPoint = this.lastPoint;
 		this.lastPoint = scrollTop;
 
-		if (scrollTop > lastPoint) {
-			const scrollDown = this.shouldScrollDown(scrollTop, scrollHeight, clientHeight);
-			if (scrollDown) {
-				return this.appInsertScroll.emit('down');
-			}
+		const needScrollDown = scrollTop > lastPoint && this.shouldScrollDown(scrollTop, scrollHeight, clientHeight);
+		if (needScrollDown) {
+			return this.appInsertScroll.emit(ScrollDirection.Down);
 		}
-		if (scrollTop < lastPoint) {
-			const scrollUp = this.shouldScrollUp(scrollTop);
-			if (scrollUp) {
-				return this.appInsertScroll.emit('up');
-			}
+		const needScrollUp = scrollTop < lastPoint && this.shouldScrollUp(scrollTop);
+		if (needScrollUp) {
+			return this.appInsertScroll.emit(ScrollDirection.Up);
 		}
 	}
 	private shouldScrollDown(scrollTop: number, scrollHeight: number, clientHeight: number) {
 		const border = scrollHeight - clientHeight - scrollTop;
-		if (border < this.offset) return true;
-		else return false;
+		return border < this.offset;
 	}
 
 	private shouldScrollUp(scrollTop: number) {
-		if (scrollTop < this.offset) return true;
-		else return false;
+		return scrollTop < this.offset;
 	}
 }
