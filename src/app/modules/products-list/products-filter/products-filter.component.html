@@ -1,22 +1,52 @@
-<form class="filter">
+<form #form="ngForm" class="filter" (ngSubmit)="log(form.value)">
 	<mat-form-field appearance="fill">
 		<mat-label>Search</mat-label>
-		<input matInput />
+		<input ngModel name="name" matInput />
 	</mat-form-field>
 
-	<div class="checkbox-container">
-		<mat-checkbox *ngFor="let brand of brands">
+	<div ngModelGroup="brands" class="checkbox-container">
+		<mat-checkbox
+			*ngFor="let brand of brands; let index = index"
+			[ngModel]="true"
+			[name]="index.toFixed()"
+		>
 			{{ brand }}
 		</mat-checkbox>
 	</div>
-	<div class="price-range">
+	<div ngModelGroup="priceRange" class="price-range">
 		<div>
 			Min
-			<app-counter-input></app-counter-input>
+			<app-counter-input name="min" [ngModel]="0"></app-counter-input>
 		</div>
 		<div>
 			Max
-			<app-counter-input></app-counter-input>
+			<app-counter-input name="max" [ngModel]="10000"></app-counter-input>
 		</div>
 	</div>
+
+	<input type="submit" />
 </form>
+<!-- <form [formGroup]="filterForm" class="filter">
+	<mat-form-field appearance="fill">
+		<mat-label>Search</mat-label>
+		<input formControlName="name" matInput />
+	</mat-form-field>
+
+	<div formArrayName="brands" class="checkbox-container">
+		<mat-checkbox [formControlName]="index" *ngFor="let brand of brands; let index = index">
+			{{ brand }}
+		</mat-checkbox>
+	</div>
+	<div formGroupName="priceRange" class="price-range">
+		<div>
+			Min
+			<app-counter-input formControlName="min"></app-counter-input>
+			<app-counter-input [formControl]="filterForm.get(['priceRange', 'min'])"></app-counter-input>
+			<app-counter-input [formControl]="filterFormControl"></app-counter-input>
+		</div>
+		<div>
+			Max
+			<app-counter-input formControlName="max"></app-counter-input>
+		</div>
+	</div>
+</form> -->

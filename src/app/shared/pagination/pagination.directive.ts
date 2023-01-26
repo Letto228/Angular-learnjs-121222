@@ -1,14 +1,6 @@
-import {
-	Directive,
-	Input,
-	OnChanges,
-	OnDestroy,
-	OnInit,
-	SimpleChanges,
-	TemplateRef,
-	ViewContainerRef,
-} from '@angular/core';
-import { BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
+import { Directive, Input, OnChanges, OnInit, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';
+import { BehaviorSubject, map, takeUntil } from 'rxjs';
+import { DestroyService } from '../destroy/destroy.service';
 import { getGroupedItems } from './get-grouped-items';
 
 interface IPaginationContext<T> {
@@ -23,17 +15,21 @@ interface IPaginationContext<T> {
 
 @Directive({
 	selector: '[appPagination]',
+	providers: [DestroyService],
 })
-export class PaginationDirective<T> implements OnInit, OnChanges, OnDestroy {
+export class PaginationDirective<T> implements OnInit, OnChanges {
 	@Input() appPaginationElementsSize: string | number = 1;
 	@Input() appPaginationOf: T[] | undefined | null;
 
 	private groupedItems: Array<T[]> = [];
 
 	private readonly currentIndex$ = new BehaviorSubject<number>(0);
-	private readonly destroy$ = new Subject<void>();
 
-	constructor(private viewContainerRef: ViewContainerRef, private templateRef: TemplateRef<IPaginationContext<T>>) {}
+	constructor(
+		private readonly viewContainerRef: ViewContainerRef,
+		private readonly templateRef: TemplateRef<IPaginationContext<T>>,
+		private readonly destroy$: DestroyService,
+	) {}
 
 	ngOnChanges({ appPaginationOf, appPaginationElementsSize }: SimpleChanges): void {
 		if (appPaginationOf || appPaginationElementsSize) {
@@ -50,10 +46,6 @@ export class PaginationDirective<T> implements OnInit, OnChanges, OnDestroy {
 
 	ngOnInit() {
 		this.listenCurrentIndexChange();
-	}
-
-	ngOnDestroy(): void {
-		this.destroy$.next();
 	}
 
 	private listenCurrentIndexChange() {

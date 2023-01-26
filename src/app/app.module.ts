@@ -11,6 +11,18 @@ import { PopupHostModule } from './shared/popup/popup-host/popup-host.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseUrlInterceptor } from './shared/base-url/base-url.interceptor';
 import { NotFoundModule } from './modules/not-found/not-found.module';
+import { StoreModule } from '@ngrx/store';
+import { storeReducer } from './shared/store/reducer';
+import { storeEffects } from './shared/store/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+
+// const isProd = false;
+// const devtoolsInstruments = [];
+
+// if (!isProd) {
+// 	devtoolsInstruments.push(StoreDevtoolsModule.instrument());
+// }
 
 @NgModule({
 	declarations: [AppComponent],
@@ -24,6 +36,10 @@ import { NotFoundModule } from './modules/not-found/not-found.module';
 		PopupHostModule,
 		HttpClientModule,
 		NotFoundModule,
+		StoreModule.forRoot(storeReducer),
+		StoreDevtoolsModule.instrument(),
+		EffectsModule.forRoot(storeEffects),
+		// ...devtoolsInstruments,
 	],
 	providers: [
 		{
