@@ -3,6 +3,7 @@ import { IProduct } from '../../shared/products/product.interface';
 import { ProductsStoreService } from '../../shared/products/products-store.service';
 import { productsMock } from '../../shared/products/products.mock';
 import { toJSON } from '../../shared/to-json/to-json';
+import { FilterOperation } from 'src/app/shared/filter-by-param/filter-operation.const'
 
 @Component({
 	selector: 'app-products-list',
@@ -16,7 +17,11 @@ export class ProductsListComponent implements OnInit {
 
 	filterValue1: any = 80;
 	filterValue2: any = 200;
-	filterOperation = 'bw';
+	filterOperation: FilterOperation = FilterOperation.Beetwen;
+
+	// filterValue1: any = 81;
+	// filterValue2: any = null;
+	// filterOperation: FilterOperation = FilterOperation.Equals;
 
 	constructor(
 		// @Inject(ChangeDetectorRef) private changeDetectorRef: ChangeDetectorRef,

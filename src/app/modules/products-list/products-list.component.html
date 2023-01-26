@@ -16,7 +16,7 @@
 		<!-- посложнее -->
 	<ng-container
 		*appPagination="
-			let productsGroup of (products | filterByParam : 'price' : this.filterValue1 : this.filterValue2 : this.filterOperation);
+			let productsGroup of (products | filterByParam : 'price' : this.filterValue1 : this.filterOperation : this.filterValue2);
 			elementsSize: 4;
 			let allIndexes = allIndexes;
 			let activeIndex = index;

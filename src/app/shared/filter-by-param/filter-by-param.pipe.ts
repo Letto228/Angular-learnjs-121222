@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { FilterOperation } from 'src/app/shared/filter-by-param/filter-operation.const'
 
 @Pipe({
   name: 'filterByParam'
@@ -8,39 +9,39 @@ export class FilterByParamPipe implements PipeTransform {
   transform<T, K extends keyof T>(
     products: T[],
     filterName: K,
-    filterValue1: T[K],
-    filterValue2: T[K] | null,
-    filterOperation: string = "eq"
+    filterValueMin: T[K],
+    filterOperation: FilterOperation = FilterOperation.Equals,
+    filterValueMax: T[K] | null = null,
   ): T[] {
     return products.filter(product =>{
       const provuctValue = product[filterName];
 
-      if (filterOperation === "eq") {
-        return provuctValue === filterValue1;
+      if (filterOperation === FilterOperation.Equals) {
+        return provuctValue === filterValueMin;
       }
-      if (filterOperation === "ne") {
-        return provuctValue !== filterValue1;
+      if (filterOperation === FilterOperation.NotEquals) {
+        return provuctValue !== filterValueMin;
       }
-      if (filterOperation === "lt") {
-        return provuctValue < filterValue1;
+      if (filterOperation === FilterOperation.LessThat) {
+        return provuctValue < filterValueMin;
       }
-      if (filterOperation === "le") {
-        return provuctValue <= filterValue1;
+      if (filterOperation === FilterOperation.LessEquals) {
+        return provuctValue <= filterValueMin;
       }
-      if (filterOperation === "ht") {
-        return provuctValue > filterValue1;
+      if (filterOperation === FilterOperation.HeighThat) {
+        return provuctValue > filterValueMin;
       }
-      if (filterOperation === "he") {
-        return provuctValue >= filterValue1;
+      if (filterOperation === FilterOperation.HeighEquals) {
+        return provuctValue >= filterValueMin;
       }
-      if (filterOperation === "bw" && filterValue2) {
-        return provuctValue >= filterValue1 && provuctValue <= filterValue2;
+      if (filterOperation === FilterOperation.Beetwen && filterValueMax) {
+        return provuctValue >= filterValueMin && provuctValue <= filterValueMax;
       }
-      if (filterOperation === "nb" && filterValue2) {
-        return provuctValue < filterValue1 && provuctValue > filterValue2;
+      if (filterOperation === FilterOperation.NotBeetwen && filterValueMax) {
+        return provuctValue < filterValueMin && provuctValue > filterValueMax;
       }
-      if (filterOperation === "like" && typeof filterValue1 === 'string' && typeof provuctValue === 'string') {
-        return provuctValue.toLowerCase().includes(filterValue1.toLowerCase());
+      if (filterOperation === FilterOperation.Like && typeof filterValueMin === 'string' && typeof provuctValue === 'string') {
+        return provuctValue.toLowerCase().includes(filterValueMin.toLowerCase());
       }
       return false;
     });
