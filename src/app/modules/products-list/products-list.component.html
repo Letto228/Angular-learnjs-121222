@@ -1,3 +1,4 @@
+<app-products-filter [brands]="brands$ | async"></app-products-filter>
 <div
 	*ngIf="products$ | async as products; else loader"
 	class="scroll-container"
@@ -5,7 +6,7 @@
 	<ng-container
 		*appPagination="
 			let productsGroup of products | filterByParam : '' : 'name';
-			elementsSize: 4;
+			elementsSize: 8;
 			let allIndexes = allIndexes;
 			let activeIndex = index;
 			let next = next;

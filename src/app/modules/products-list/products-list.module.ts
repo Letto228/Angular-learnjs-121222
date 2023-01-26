@@ -9,10 +9,7 @@ import { PaginationModule } from '../../shared/pagination/pagination.module';
 import { FilterByParamModule } from '../../shared/filter-by-param/filter-by-param.module';
 import { RouterModule } from '@angular/router';
 import { ProductsListRoutingModule } from './products-list-routing.module';
-import { MatInputModule } from '@angular/material/input';
-import { CounterInputModule } from '../../shared/counter-input/counter-input.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ValidatorsModule } from '../../shared/validators/validators.module';
+import { ProductsFilterModule } from './products-filter/products-filter.module';
 
 @NgModule({
 	declarations: [ProductsListComponent],
@@ -26,11 +23,7 @@ import { ValidatorsModule } from '../../shared/validators/validators.module';
 		FilterByParamModule,
 		RouterModule,
 		ProductsListRoutingModule,
-		MatInputModule,
-		CounterInputModule,
-		ReactiveFormsModule,
-		FormsModule,
-		ValidatorsModule,
+		ProductsFilterModule,
 	],
 	exports: [ProductsListComponent],
 })
