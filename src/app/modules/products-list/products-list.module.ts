@@ -33,11 +33,5 @@ import { ValidatorsModule } from '../../shared/validators/validators.module';
 		ValidatorsModule,
 	],
 	exports: [ProductsListComponent],
-	// providers: [
-	// 	{
-	// 		provide: 'name',
-	// 		useValue: 'ProductsListModule',
-	// 	}
-	// ]
 })
 export class ProductsListModule {}

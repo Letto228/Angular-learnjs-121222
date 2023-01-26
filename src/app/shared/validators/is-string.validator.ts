@@ -1,6 +1,5 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-// ValidatorFn
 export function isStringValidator(control: AbstractControl): ValidationErrors | null {
 	return Number(control.value) ? { isStringValidator: 'is not string' } : null;
 }

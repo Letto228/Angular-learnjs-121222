@@ -2,7 +2,6 @@ import { AbstractControl, AsyncValidatorFn, ValidationErrors } from '@angular/fo
 import { map, Observable, timer } from 'rxjs';
 import { isStringValidator } from './is-string.validator';
 
-// ValidatorFn
 export function isStringAsyncValidator(control: AbstractControl): Observable<ValidationErrors | null> {
 	return timer(3000).pipe(map(() => (Number(control.value) ? { isStringAsyncValidator: 'is not string' } : null)));
 }

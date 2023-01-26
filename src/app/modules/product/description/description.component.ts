@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { ProductsStoreService } from '../../../shared/products/products-store.service';
 
 @Component({
@@ -11,10 +10,5 @@ import { ProductsStoreService } from '../../../shared/products/products-store.se
 export class DescriptionComponent {
 	readonly products$ = this.productsStoreService.product$;
 
-	// constructor(
-	// 	private readonly activatedRoute: ActivatedRoute,
-	// ) {
-	// 	this.activatedRoute.parent?.params.subscribe(console.log);
-	// }
 	constructor(private readonly productsStoreService: ProductsStoreService) {}
 }

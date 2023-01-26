@@ -2,55 +2,9 @@
 	*ngIf="products$ | async as products; else loader"
 	class="scroll-container"
 >
-	<!-- <app-counter-input
-		[formControl]="searchFormControl"
-		[step]="100"
-	></app-counter-input> -->
-	<!-- formControlDirective => formControl.valueChanges.subscribe(value => {
-		NG_VALUE_ACCESSOR|CounterInputComponent.writeValue(value);
-	}) -->
-
-	<!-- <mat-form-field appearance="fill">
-		<mat-label>Search</mat-label>
-		<input matInput [formControl]="searchFormControl"/>
-	</mat-form-field>
-
-	{{errors$ | async | json}} -->
-
-	<!-- {{searchFormControl.value}}
-	{{searchedText$ | async}} -->
-
-	<!-- {{searchFormControl.touched}}
-	{{searchFormControl.dirty}}
-	{{searchFormControl.valid}} -->
-
-	<!-- <mat-form-field appearance="fill">
-		<mat-label>Search</mat-label> -->
-	<!-- <input matInput [ngModel]="searchedText" (ngModelChange)="searchedText = $event"/> -->
-	<!-- <input
-			#searchInput="ngModel"
-			matInput
-			required
-			appIsStringAsync
-			[minlength]="3"
-			[ngModelOptions]="{
-				updateOn: 'blur'
-			}"
-			[(ngModel)]="searchedText"
-		/> -->
-	<!-- NgModel => exportAs: 'ngModel' -->
-	<!-- </mat-form-field> -->
-	<!-- {{searchInput.errors | json}} -->
-
-	<!-- {{searchedText}} -->
-	<!-- {{searchInput.touched}}
-	{{searchInput.dirty}}
-	{{searchInput.valid}} -->
-
 	<ng-container
 		*appPagination="
-			let productsGroup of products
-				| filterByParam : searchedText : 'name';
+			let productsGroup of products | filterByParam : '' : 'name';
 			elementsSize: 4;
 			let allIndexes = allIndexes;
 			let activeIndex = index;

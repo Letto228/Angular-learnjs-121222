@@ -6,10 +6,4 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 	styleUrls: ['./not-found.component.less'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NotFoundComponent {
-	// constructor(
-	// 	@Inject('name') private readonly name: string,
-	// ) {
-	// 	console.log('NotFoundComponent - ', this.name);
-	// }
-}
+export class NotFoundComponent {}

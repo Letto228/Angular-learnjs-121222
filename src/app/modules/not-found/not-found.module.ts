@@ -6,11 +6,5 @@ import { NotFoundComponent } from './not-found.component';
 	declarations: [NotFoundComponent],
 	imports: [CommonModule],
 	exports: [NotFoundComponent],
-	// providers: [
-	// 	{
-	// 		provide: 'name',
-	// 		useValue: 'NotFoundModule',
-	// 	}
-	// ]
 })
 export class NotFoundModule {}
