@@ -1,4 +1,4 @@
-<div class="scroll-container">
+<div appScroller class="scroll-container" (loadPage)="onLoadPage($event)">
 	<ng-template
 		let-productsFromNgIf="ngIf"
 		[ngIf]="productsList"

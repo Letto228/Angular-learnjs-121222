@@ -20,4 +20,8 @@ export class ProductsListComponent implements OnInit {
 		console.log('calc');
 		return this.products;
 	}
+
+	onLoadPage(info: string) {
+		console.log(info);
+	}
 }
