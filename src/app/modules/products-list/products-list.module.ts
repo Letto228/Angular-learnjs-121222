@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { PaginationModule } from '../../shared/pagination/pagination.module';
 import { ToJsonModule } from '../../shared/to-json/to-json.module';
+import { FilterByParamModule } from 'src/app/shared/filter-by-param/filter-by-param.module';
 
 @NgModule({
 	declarations: [ProductsListComponent],
@@ -18,6 +19,7 @@ import { ToJsonModule } from '../../shared/to-json/to-json.module';
 		MatButtonModule,
 		PaginationModule,
 		ToJsonModule,
+		FilterByParamModule,
 	],
 	exports: [ProductsListComponent],
 })

@@ -14,7 +14,7 @@ export class ProductsListComponent implements OnInit {
 	// readonly productsStoreService = new ProductsStoreService();
 	readonly products$ = this.productsStoreService.products$;
 
-	filterValue: any;
+	filterValue = 4.5;
 	filterName = '';
 
 	constructor(
